@@ -53,7 +53,7 @@ abstract class _LoginStore with Store {
     _validateLoginState();
   }
 
-  void _validateLoginState() => _loginValidation = _loginValidator.validateLogin(loginState: _loginState);
+  void _validateLoginState() => _loginValidation = _loginValidator.validate(loginState: _loginState);
 
   @action
   Future<void> continueButtonClicked() async {

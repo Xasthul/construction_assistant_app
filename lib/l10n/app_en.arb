@@ -1,5 +1,6 @@
 {
   "constructionAssistantAppTitle": "Construction Assistant App",
+  "@-------------------------Login-------------------------": {},
   "loginTitle": "Login",
   "loginDescription": "Enter your login credentials in order to use Construction Assistant application.",
   "loginEmailLabel": "Email",
@@ -8,5 +9,23 @@
   "loginEnterYourPasswordHint": "Enter your password",
   "loginContinueButton": "Continue",
   "loginDontHaveAnAccountLabel": "Don't have an account?",
-  "loginRegisterButton": "Register"
+  "loginRegisterButton": "Register",
+  "@-------------------------CreateAccount-------------------------": {},
+  "createAccountTitle": "Create account",
+  "createAccountNameLabel": "Name",
+  "createAccountEnterYourNameHint": "Enter your name",
+  "createAccountMinimumCharactersLongHelper": "Minimum 8 characters long, include at least one letter, and have one number or special character",
+  "createAccountEmailLabel": "Email",
+  "createAccountEnterYourEmailHint": "Enter your email",
+  "createAccountPasswordLabel": "Password",
+  "createAccountEnterYourPasswordHint": "Enter your password",
+  "createAccountConfirmPasswordLabel": "Confirm password",
+  "createAccountRepeatPasswordHint": "Repeat password",
+  "createAccountSignUpButton": "Sign-up",
+  "createAccountAlreadyHaveAnAccountLabel": "Already have an account?",
+  "createAccountLoginButton": "Login",
+  "createAccountEnterAValidNameError": "Enter a valid name",
+  "createAccountEnterAValidEmailError": "Enter a valid email",
+  "createAccountMinimumCharactersLongError": "Minimum 8 characters long, include at least one letter, and have one number or special character",
+  "createAccountPasswordsDontMatchError": "Passwords don't match"
 }

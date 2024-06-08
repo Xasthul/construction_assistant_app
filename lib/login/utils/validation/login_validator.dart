@@ -4,7 +4,7 @@ import 'package:construction_assistant_app/login/utils/entity/login_password_err
 import 'package:construction_assistant_app/login/utils/validation/login_validation.dart';
 
 class LoginValidator {
-  LoginValidation validateLogin({required LoginInputState loginState}) => LoginValidation(
+  LoginValidation validate({required LoginInputState loginState}) => LoginValidation(
         emailError: _getLoginEmailError(loginState.emailText),
         passwordError: _getLoginPasswordError(loginState.passwordText),
       );
