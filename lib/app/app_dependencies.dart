@@ -1,3 +1,4 @@
+import 'package:construction_assistant_app/app/store/app_store.dart';
 import 'package:construction_assistant_app/app/utils/component/dependency_scope.dart';
 import 'package:construction_assistant_app/l10n/generated/app_localizations.dart';
 import 'package:flutter/material.dart';
@@ -24,5 +25,6 @@ class _AppDependenciesState extends State<AppDependencies> with DependencyScope 
   @override
   void registerDependencies() {
     getIt.registerLazySingleton<AppLocalizations>(() => AppLocalizations.of(context));
+    getIt.registerLazySingleton<AppStore>(() => AppStore());
   }
 }
