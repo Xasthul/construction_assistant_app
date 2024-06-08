@@ -1,0 +1,4 @@
+enum LoginEmailError {
+  none,
+  empty,
+}

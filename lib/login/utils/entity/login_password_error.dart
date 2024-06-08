@@ -1,0 +1,4 @@
+enum LoginPasswordError {
+  none,
+  empty,
+}
