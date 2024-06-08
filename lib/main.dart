@@ -21,6 +21,7 @@ class ConstructionAssistantApp extends StatelessWidget {
   Widget build(BuildContext context) => AppTheme(
         child: Builder(
           builder: (context) => MaterialApp(
+            debugShowCheckedModeBanner: false,
             onGenerateTitle: (context) => AppLocalizations.of(context).constructionAssistantAppTitle,
             theme: AppTheme.of(context).themeData,
             localizationsDelegates: AppLocalizations.localizationsDelegates,
