@@ -1,8 +1,9 @@
-import 'package:construction_assistant_app/app/app_dependencies.dart';
 import 'package:dio/dio.dart';
 
-class DioClient {
-  final Dio _dio = getIt<Dio>();
+abstract class DioClientWrapper {
+  DioClientWrapper({required Dio dio}) : _dio = dio;
+
+  final Dio _dio;
 
   Future<dynamic> get(
     String url, {
