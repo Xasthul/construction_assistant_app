@@ -2,7 +2,6 @@ import 'package:construction_assistant_app/app/app_dependencies.dart';
 import 'package:construction_assistant_app/app/utils/component/dependency_scope.dart';
 import 'package:construction_assistant_app/login/create_account/store/create_account_store.dart';
 import 'package:construction_assistant_app/login/create_account/utils/formatter/create_account_error_formatter.dart';
-import 'package:construction_assistant_app/login/create_account/utils/use_case/create_account_use_case.dart';
 import 'package:construction_assistant_app/login/create_account/utils/validation/create_account_validator.dart';
 import 'package:flutter/material.dart';
 
@@ -24,7 +23,6 @@ class _CreateAccountDependenciesState extends State<CreateAccountDependencies> w
 
   @override
   void registerDependencies() {
-    getIt.registerLazySingleton<CreateAccountUseCase>(() => CreateAccountUseCase());
     getIt.registerLazySingleton<CreateAccountValidator>(() => CreateAccountValidator());
     getIt.registerLazySingleton<CreateAccountErrorFormatter>(() => CreateAccountErrorFormatter());
     getIt.registerLazySingleton<CreateAccountStore>(() => CreateAccountStore());

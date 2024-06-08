@@ -5,9 +5,9 @@ import 'package:construction_assistant_app/login/create_account/utils/entity/cre
 import 'package:construction_assistant_app/login/create_account/utils/entity/create_account_password_error.dart';
 import 'package:construction_assistant_app/login/create_account/utils/entity/create_account_state.dart';
 import 'package:construction_assistant_app/login/create_account/utils/formatter/create_account_error_formatter.dart';
-import 'package:construction_assistant_app/login/create_account/utils/use_case/create_account_use_case.dart';
 import 'package:construction_assistant_app/login/create_account/utils/validation/create_account_validation.dart';
 import 'package:construction_assistant_app/login/create_account/utils/validation/create_account_validator.dart';
+import 'package:construction_assistant_app/login/utils/use_case/login_use_case.dart';
 import 'package:mobx/mobx.dart';
 
 part 'create_account_store.g.dart';
@@ -15,7 +15,7 @@ part 'create_account_store.g.dart';
 class CreateAccountStore = _CreateAccountStore with _$CreateAccountStore;
 
 abstract class _CreateAccountStore with Store {
-  final CreateAccountUseCase _createAccountUseCase = getIt<CreateAccountUseCase>();
+  final LoginUseCase _loginUseCase = getIt<LoginUseCase>();
   final CreateAccountValidator _createAccountValidator = getIt<CreateAccountValidator>();
   final CreateAccountErrorFormatter _createAccountErrorFormatter = getIt<CreateAccountErrorFormatter>();
 
@@ -104,7 +104,7 @@ abstract class _CreateAccountStore with Store {
     }
     _isLoading = true;
     try {
-      await _createAccountUseCase.register(
+      await _loginUseCase.signUp(
         name: _createAccountState.nameText,
         email: _createAccountState.emailText,
         password: _createAccountState.passwordText,

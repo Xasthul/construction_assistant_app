@@ -4,6 +4,7 @@ import 'package:construction_assistant_app/app/utils/component/dependency_scope.
 import 'package:construction_assistant_app/app/utils/notifier/app_navigation_state_notifier.dart';
 import 'package:construction_assistant_app/login/store/login_store.dart';
 import 'package:construction_assistant_app/login/utils/formatter/login_error_formatter.dart';
+import 'package:construction_assistant_app/login/utils/service/login_service.dart';
 import 'package:construction_assistant_app/login/utils/use_case/login_use_case.dart';
 import 'package:construction_assistant_app/login/utils/validation/login_validator.dart';
 import 'package:flutter/material.dart';
@@ -26,6 +27,7 @@ class _LoginDependenciesState extends State<LoginDependencies> with DependencySc
 
   @override
   void registerDependencies() {
+    getIt.registerLazySingleton<LoginService>(() => LoginService());
     getIt.registerLazySingleton<LoginUseCase>(() => LoginUseCase());
     getIt.registerLazySingleton<LoginValidator>(() => LoginValidator());
     getIt.registerLazySingleton<LoginErrorFormatter>(() => LoginErrorFormatter());
