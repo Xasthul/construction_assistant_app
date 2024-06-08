@@ -1,0 +1,4 @@
+enum AppNavigationState {
+  login,
+  home,
+}
