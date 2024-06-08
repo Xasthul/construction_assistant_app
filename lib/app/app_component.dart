@@ -1,6 +1,7 @@
 import 'package:construction_assistant_app/app/app_dependencies.dart';
 import 'package:construction_assistant_app/app/store/app_store.dart';
 import 'package:construction_assistant_app/app/utils/entity/app_navigation_state.dart';
+import 'package:construction_assistant_app/home/home_component.dart';
 import 'package:construction_assistant_app/login/login_component.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -28,6 +29,6 @@ class _AppComponentBaseState extends State<_AppComponentBase> {
   Widget build(BuildContext context) => Observer(
       builder: (context) => switch (_store.navigationState) {
             AppNavigationState.login => const LoginComponent(),
-            AppNavigationState.home => const Placeholder()
+            AppNavigationState.home => const HomeComponent()
           });
 }

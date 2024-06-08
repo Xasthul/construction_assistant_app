@@ -27,5 +27,7 @@
   "createAccountEnterAValidNameError": "Enter a valid name",
   "createAccountEnterAValidEmailError": "Enter a valid email",
   "createAccountMinimumCharactersLongError": "Minimum 8 characters long, include at least one letter, and have one number or special character",
-  "createAccountPasswordsDontMatchError": "Passwords don't match"
+  "createAccountPasswordsDontMatchError": "Passwords don't match",
+  "@-------------------------Home-------------------------": {},
+  "homeLogoutButton": "Logout"
 }

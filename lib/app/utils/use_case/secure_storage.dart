@@ -20,4 +20,9 @@ class SecureStorage {
         key: _refreshTokenKey,
         value: refreshToken,
       );
+
+  Future<void> removeTokens() async {
+    await _flutterSecureStorage.delete(key: _accessTokenKey);
+    await _flutterSecureStorage.delete(key: _refreshTokenKey);
+  }
 }
