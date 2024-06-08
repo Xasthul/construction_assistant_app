@@ -7,14 +7,17 @@ import 'package:construction_assistant_app/login/utils/component/login_descripti
 import 'package:construction_assistant_app/login/utils/component/login_email_text_field_component.dart';
 import 'package:construction_assistant_app/login/utils/component/login_password_text_field_component.dart';
 import 'package:construction_assistant_app/login/utils/component/login_register_component.dart';
+import 'package:construction_assistant_app/login/utils/navigator/login_navigator.dart';
 import 'package:flutter/material.dart';
 
 class LoginComponent extends StatelessWidget {
   const LoginComponent({super.key});
 
   @override
-  Widget build(BuildContext context) => const LoginDependencies(
-        child: _LoginComponentBase(),
+  Widget build(BuildContext context) => LoginDependencies(
+        child: LoginNavigator(
+          child: const _LoginComponentBase(),
+        ),
       );
 }
 

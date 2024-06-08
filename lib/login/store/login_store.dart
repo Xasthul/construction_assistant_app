@@ -24,8 +24,6 @@ abstract class _LoginStore with Store {
   @readonly
   bool _obscurePasswordField = true;
   @readonly
-  bool _shouldNavigateToCreateAccount = false;
-  @readonly
   bool _isLoading = false;
   @readonly
   String? _errorMessage;
@@ -73,12 +71,6 @@ abstract class _LoginStore with Store {
       _isLoading = false;
     }
   }
-
-  @action
-  void registerButtonClicked() => _shouldNavigateToCreateAccount = true;
-
-  @action
-  void handleShouldNavigateToCreateAccount() => _shouldNavigateToCreateAccount = false;
 
   @action
   void handleErrorMessage() => _errorMessage = null;
