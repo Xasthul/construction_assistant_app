@@ -1,4 +1,5 @@
 import 'package:construction_assistant_app/app/app_component.dart';
+import 'package:construction_assistant_app/app/utils/theme/app_theme.dart';
 import 'package:construction_assistant_app/l10n/generated/app_localizations.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -21,10 +22,7 @@ class ConstructionAssistantApp extends StatelessWidget {
         title: AppLocalizations.of(context).constructionAssistantAppTitle,
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          useMaterial3: true,
-        ),
+        theme: AppTheme.of(context).themeData,
         home: const AppComponent(),
       );
 }
