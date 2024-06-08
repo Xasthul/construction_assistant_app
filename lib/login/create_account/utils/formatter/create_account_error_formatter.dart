@@ -10,7 +10,7 @@ class CreateAccountErrorFormatter {
 
   String formatError(dynamic error) {
     // TODO(naz): implement
-    return '';
+    return error.toString();
   }
 
   String? getNameErrorStringFrom(CreateAccountNameError nameError) => switch (nameError) {

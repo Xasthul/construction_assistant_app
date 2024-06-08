@@ -91,7 +91,7 @@ class _CreateAccountComponentBaseState extends State<_CreateAccountComponentBase
                   const CreateAccountSignUpButtonComponent(),
                   const SizedBox(height: 20),
                   const CreateAccountLoginButtonComponent(),
-                  const SizedBox(height: 32),
+                  const SizedBox(height: 16),
                 ]),
               ),
             ),

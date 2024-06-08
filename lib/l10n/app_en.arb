@@ -14,7 +14,7 @@
   "createAccountTitle": "Create account",
   "createAccountNameLabel": "Name",
   "createAccountEnterYourNameHint": "Enter your name",
-  "createAccountMinimumCharactersLongHelper": "Minimum 8 characters long, include at least one letter, and have one number or special character",
+  "createAccountMinimumCharactersLongHelper": "Minimum 8 characters long, include at least one letter, one number and a special character",
   "createAccountEmailLabel": "Email",
   "createAccountEnterYourEmailHint": "Enter your email",
   "createAccountPasswordLabel": "Password",
