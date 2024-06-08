@@ -18,11 +18,15 @@ class ConstructionAssistantApp extends StatelessWidget {
   const ConstructionAssistantApp({super.key});
 
   @override
-  Widget build(BuildContext context) => MaterialApp(
-        title: AppLocalizations.of(context).constructionAssistantAppTitle,
-        localizationsDelegates: AppLocalizations.localizationsDelegates,
-        supportedLocales: AppLocalizations.supportedLocales,
-        theme: AppTheme.of(context).themeData,
-        home: const AppComponent(),
+  Widget build(BuildContext context) => AppTheme(
+        child: Builder(
+          builder: (context) => MaterialApp(
+            onGenerateTitle: (context) => AppLocalizations.of(context).constructionAssistantAppTitle,
+            theme: AppTheme.of(context).themeData,
+            localizationsDelegates: AppLocalizations.localizationsDelegates,
+            supportedLocales: AppLocalizations.supportedLocales,
+            home: const AppComponent(),
+          ),
+        ),
       );
 }
