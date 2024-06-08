@@ -6,5 +6,7 @@
   "loginEnterYourEmailHint": "Enter your email",
   "loginPasswordLabel": "Password",
   "loginEnterYourPasswordHint": "Enter your password",
-  "loginContinueButton": "Continue"
+  "loginContinueButton": "Continue",
+  "loginDontHaveAnAccountLabel": "Don't have an account?",
+  "loginRegisterButton": "Register"
 }

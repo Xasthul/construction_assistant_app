@@ -6,6 +6,7 @@ import 'package:construction_assistant_app/login/utils/component/login_continue_
 import 'package:construction_assistant_app/login/utils/component/login_description_component.dart';
 import 'package:construction_assistant_app/login/utils/component/login_email_text_field_component.dart';
 import 'package:construction_assistant_app/login/utils/component/login_password_text_field_component.dart';
+import 'package:construction_assistant_app/login/utils/component/login_register_component.dart';
 import 'package:flutter/material.dart';
 
 class LoginComponent extends StatelessWidget {
@@ -37,6 +38,9 @@ class _LoginComponentBase extends StatelessWidget {
                   LoginPasswordTextFieldComponent(),
                   SizedBox(height: 48),
                   LoginContinueButtonComponent(),
+                  SizedBox(height: 20),
+                  LoginRegisterButtonComponent(),
+                  SizedBox(height: 32),
                 ]),
               ),
             ),
