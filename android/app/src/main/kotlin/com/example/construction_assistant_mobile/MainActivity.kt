@@ -1,4 +1,4 @@
-package com.example.construction_assistant_mobile
+package com.example.construction_assistant_app
 
 import io.flutter.embedding.android.FlutterActivity
 

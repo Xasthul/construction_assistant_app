@@ -1,4 +1,4 @@
-# construction_assistant_mobile
+# construction_assistant_app
 
 Construction Assistant App
 
