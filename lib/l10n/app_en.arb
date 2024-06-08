@@ -1,3 +1,10 @@
 {
-  "constructionAssistantAppTitle": "Construction Assistant App"
+  "constructionAssistantAppTitle": "Construction Assistant App",
+  "loginTitle": "Login",
+  "loginDescription": "Enter your login credentials in order to use Construction Assistant application.",
+  "loginEmailLabel": "Email",
+  "loginEnterYourEmailHint": "Enter your email",
+  "loginPasswordLabel": "Password",
+  "loginEnterYourPasswordHint": "Enter your password",
+  "loginContinueButton": "Continue"
 }
