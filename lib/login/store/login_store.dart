@@ -33,6 +33,9 @@ abstract class _LoginStore with Store {
   @computed
   bool get shouldEnableContinueButton => _loginValidation.isValid;
 
+  @computed
+  bool get isPasswordEmpty => _loginState.passwordText.isEmpty;
+
   @action
   void toggleObscurePasswordField({required String controllerText}) {
     if (controllerText.isNotEmpty) {

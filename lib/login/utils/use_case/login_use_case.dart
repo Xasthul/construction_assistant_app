@@ -2,5 +2,7 @@ class LoginUseCase {
   Future<void> login({
     required String email,
     required String password,
-  }) async {}
+  }) async {
+    // TODO(naz): implement
+  }
 }
