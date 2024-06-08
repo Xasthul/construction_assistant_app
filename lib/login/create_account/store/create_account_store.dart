@@ -1,4 +1,5 @@
 import 'package:construction_assistant_app/app/app_dependencies.dart';
+import 'package:construction_assistant_app/app/utils/notifier/app_navigation_state_notifier.dart';
 import 'package:construction_assistant_app/login/create_account/utils/entity/create_account_confirm_password_error.dart';
 import 'package:construction_assistant_app/login/create_account/utils/entity/create_account_email_error.dart';
 import 'package:construction_assistant_app/login/create_account/utils/entity/create_account_name_error.dart';
@@ -18,6 +19,7 @@ abstract class _CreateAccountStore with Store {
   final LoginUseCase _loginUseCase = getIt<LoginUseCase>();
   final CreateAccountValidator _createAccountValidator = getIt<CreateAccountValidator>();
   final CreateAccountErrorFormatter _createAccountErrorFormatter = getIt<CreateAccountErrorFormatter>();
+  final AppNavigationStateNotifier _appNavigationStateNotifier = getIt<AppNavigationStateNotifier>();
 
   @readonly
   CreateAccountState _createAccountState = CreateAccountState.empty();
@@ -109,6 +111,11 @@ abstract class _CreateAccountStore with Store {
         email: _createAccountState.emailText,
         password: _createAccountState.passwordText,
       );
+      await _loginUseCase.login(
+        email: _createAccountState.emailText,
+        password: _createAccountState.passwordText,
+      );
+      await _appNavigationStateNotifier.updateNavigationState();
     } catch (error) {
       _errorMessage = _createAccountErrorFormatter.formatError(error);
     } finally {

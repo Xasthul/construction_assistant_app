@@ -1,5 +1,9 @@
 {
   "constructionAssistantAppTitle": "Construction Assistant App",
+  "@-------------------------CoreError-------------------------": {},
+  "coreErrorEmailAlreadyRegistered": "The email address you provided is already registered. Please use a different email or try logging in.",
+  "coreErrorSomethingWentWrong": "Something went wrong. Please try again later.",
+  "coreErrorCredentialsIncorrect": "The credentials are incorrect. Please try again.",
   "@-------------------------Login-------------------------": {},
   "loginTitle": "Login",
   "loginDescription": "Enter your login credentials in order to use Construction Assistant application.",
@@ -26,7 +30,7 @@
   "createAccountLoginButton": "Login",
   "createAccountEnterAValidNameError": "Enter a valid name",
   "createAccountEnterAValidEmailError": "Enter a valid email",
-  "createAccountMinimumCharactersLongError": "Minimum 8 characters long, include at least one letter, and have one number or special character",
+  "createAccountMinimumCharactersLongError": "Minimum 8 characters long, include at least one letter, one number and a special character",
   "createAccountPasswordsDontMatchError": "Passwords don't match",
   "@-------------------------Home-------------------------": {},
   "homeLogoutButton": "Logout"
