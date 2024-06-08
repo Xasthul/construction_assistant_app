@@ -10,7 +10,7 @@ class HideKeyboardComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => GestureDetector(
-        onTap: FocusManager.instance.primaryFocus?.unfocus,
+        onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
         child: _child,
       );
 }
