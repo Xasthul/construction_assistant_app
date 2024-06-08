@@ -36,6 +36,6 @@ class _AppDependenciesState extends State<AppDependencies> with DependencyScope 
     getIt.registerLazySingleton<FlutterSecureStorage>(() => const FlutterSecureStorage());
     getIt.registerLazySingleton<SecureStorage>(() => SecureStorage());
     getIt.registerLazySingleton<AppLocalizations>(() => AppLocalizations.of(context));
-    getIt.registerLazySingleton<AppStore>(() => AppStore());
+    getIt.registerLazySingleton<AppStore>(() => AppStore()..load());
   }
 }

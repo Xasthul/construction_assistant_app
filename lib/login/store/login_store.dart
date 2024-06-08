@@ -63,7 +63,6 @@ abstract class _LoginStore with Store {
         email: _loginState.emailText,
         password: _loginState.passwordText,
       );
-      // TODO(naz): save tokens
       await _appNavigationStateNotifier.updateNavigationState();
     } catch (error) {
       _errorMessage = _loginErrorFormatter.formatError(error);
