@@ -5,7 +5,7 @@ abstract class DioClientWrapper {
 
   final Dio _dio;
 
-  Future<dynamic> get(
+  Future<Map<String, dynamic>> get(
     String url, {
     Map<String, dynamic>? params,
     Map<String, String>? headers,
@@ -15,7 +15,7 @@ abstract class DioClientWrapper {
       queryParameters: params,
       options: Options(headers: headers),
     );
-    return response.data;
+    return response.data as Map<String, dynamic>;
   }
 
   Future<Map<String, dynamic>> post(
