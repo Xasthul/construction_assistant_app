@@ -8,5 +8,5 @@ class AppDataResponse {
 
   factory AppDataResponse.fromJson(Map<String, dynamic> json) => _$AppDataResponseFromJson(json);
 
-  final Map<String, dynamic> data;
+  final dynamic data;
 }

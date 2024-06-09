@@ -48,7 +48,7 @@ class DioAuthorizedClient extends DioClientWrapper {
         params: {'refreshToken': refreshToken},
       );
       final appDataResponse = AppDataResponse.fromJson(response);
-      final accessToken = AccessTokenResponse.fromJson(appDataResponse.data).accessToken;
+      final accessToken = AccessTokenResponse.fromJson(appDataResponse.data as Map<String, dynamic>).accessToken;
       await _secureStorage.writeAccessToken(accessToken);
       return accessToken;
     } catch (error) {

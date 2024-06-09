@@ -33,6 +33,6 @@ class LoginService {
       },
     );
     final appDataResponse = AppDataResponse.fromJson(response);
-    return LoginResponse.fromJson(appDataResponse.data);
+    return LoginResponse.fromJson(appDataResponse.data as Map<String, dynamic>);
   }
 }
