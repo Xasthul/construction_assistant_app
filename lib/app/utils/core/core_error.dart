@@ -30,4 +30,6 @@ class CoreInvalidRefreshTokenError extends CoreError {}
 
 class CoreInvalidAccessTokenError extends CoreError {}
 
+class CoreDeleteCreatorFromProjectError extends CoreError {}
+
 class CoreUnknownError extends CoreError {}

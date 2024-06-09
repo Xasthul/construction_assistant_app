@@ -29,6 +29,7 @@ class CoreErrorHandler {
       13 => throw CoreWrongCredentialsError(),
       14 => throw CoreInvalidRefreshTokenError(),
       15 => throw CoreInvalidAccessTokenError(),
+      16 => throw CoreDeleteCreatorFromProjectError(),
       _ => throw CoreUnknownError(),
     };
   }

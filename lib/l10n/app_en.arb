@@ -6,6 +6,7 @@
   "coreEmailAlreadyRegisteredError": "The email address you provided is already registered. Please use a different email or try logging in.",
   "coreWrongCredentialsError": "The credentials are incorrect. Please try again.",
   "coreInvalidAccessTokenError": "The session has been expired. Please login again.",
+  "coreDeleteCreatorFromProjectError": "You cannot remove the creator of the project.",
   "coreSomethingWentWrongError": "Something went wrong. Please try again later.",
   "coreUnknownError": "Sorry, an unexpected error occurred. Please try again later.",
   "@-------------------------Login-------------------------": {},

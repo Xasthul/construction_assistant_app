@@ -23,6 +23,7 @@ class CoreErrorFormatter {
         CoreWrongCredentialsError() => _appLocalizations.coreWrongCredentialsError,
         CoreInvalidRefreshTokenError() => _appLocalizations.coreSomethingWentWrongError,
         CoreInvalidAccessTokenError() => _appLocalizations.coreInvalidAccessTokenError,
+        CoreDeleteCreatorFromProjectError() => _appLocalizations.coreDeleteCreatorFromProjectError,
         _ => _appLocalizations.coreUnknownError,
       };
     }
