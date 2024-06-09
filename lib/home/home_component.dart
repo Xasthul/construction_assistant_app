@@ -12,8 +12,7 @@ class HomeComponent extends StatelessWidget {
   const HomeComponent({super.key});
 
   @override
-  Widget build(BuildContext context) =>
-      HomeDependencies(
+  Widget build(BuildContext context) => HomeDependencies(
         child: HomeNavigator(
           child: const _HomeComponentBase(),
         ),
@@ -31,8 +30,7 @@ class _HomeComponentBaseState extends State<_HomeComponentBase> {
   final HomeStore _store = getIt<HomeStore>();
 
   @override
-  Widget build(BuildContext context) =>
-      Scaffold(
+  Widget build(BuildContext context) => Scaffold(
         body: SafeArea(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -47,9 +45,7 @@ class _HomeComponentBaseState extends State<_HomeComponentBase> {
                   const SizedBox(height: 8),
                   const HomeHeaderComponent(),
                   const SizedBox(height: 8),
-                  if (_store.projects.isNotEmpty) const SizedBox() //
-                  else
-                    const HomeEmptyContentComponent(),
+                  if (_store.projects.isNotEmpty) const SizedBox() else const HomeEmptyContentComponent(),
                 ]);
               },
             ),
