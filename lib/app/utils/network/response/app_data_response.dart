@@ -1,9 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:meta/meta.dart';
 
 part 'app_data_response.g.dart';
 
-@immutable
 @JsonSerializable()
 class AppDataResponse {
   const AppDataResponse({required this.data});

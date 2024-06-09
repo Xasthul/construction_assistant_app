@@ -1,9 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:meta/meta.dart';
 
 part 'core_error_response.g.dart';
 
-@immutable
 @JsonSerializable()
 class CoreErrorResponse {
   const CoreErrorResponse({

@@ -45,5 +45,7 @@
       }
     }
   },
+  "homeNoProjectsTitle": "No projects",
+  "homeInOrderToStartLabel": "In order to start add you first project",
   "homeLogoutButton": "Logout"
 }

@@ -1,10 +1,9 @@
 import 'package:construction_assistant_app/app/app_dependencies.dart';
-import 'package:construction_assistant_app/app/utils/component/app_filled_button_component.dart';
-import 'package:construction_assistant_app/app/utils/component/scrollable_content_component.dart';
 import 'package:construction_assistant_app/home/home_dependencies.dart';
 import 'package:construction_assistant_app/home/store/home_store.dart';
+import 'package:construction_assistant_app/home/utils/component/home_empty_content_component.dart';
+import 'package:construction_assistant_app/home/utils/component/home_header_component.dart';
 import 'package:construction_assistant_app/home/utils/navigator/home_navigator.dart';
-import 'package:construction_assistant_app/l10n/generated/app_localizations.dart';
 import 'package:flutter/material.dart';
 
 class HomeComponent extends StatelessWidget {
@@ -29,18 +28,17 @@ class _HomeComponentBaseState extends State<_HomeComponentBase> {
   final HomeStore _store = getIt<HomeStore>();
 
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) => const Scaffold(
         body: SafeArea(
-          child: ScrollableContentComponent(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Center(
-                child: AppFilledButtonComponent(
-                  title: AppLocalizations.of(context).homeLogoutButton,
-                  onPressed: _store.logout,
-                ),
-              ),
-            ),
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16),
+            child: Column(children: [
+              SizedBox(height: 8),
+              HomeHeaderComponent(),
+              SizedBox(height: 8),
+              HomeEmptyContentComponent(),
+              SizedBox(height: 8),
+            ]),
           ),
         ),
       );
