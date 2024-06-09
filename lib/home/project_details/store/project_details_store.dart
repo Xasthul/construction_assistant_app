@@ -22,14 +22,16 @@ abstract class _ProjectDetailsStore with Store {
   Project _project;
   @readonly
   List<Step> _steps = [];
-
   @readonly
   String _newProjectName = '';
   @readonly
   bool _isProjectRenamedSuccessfully = false;
-
   @readonly
   bool _isProjectDeletedSuccessfully = false;
+  @readonly
+  bool _isAddUserSuccessful = false;
+  @readonly
+  String _addUserEmail = '';
   @readonly
   bool _isLoading = false;
   @readonly
@@ -43,6 +45,9 @@ abstract class _ProjectDetailsStore with Store {
 
   @computed
   bool get isUpdateProjectNameButtonEnabled => _newProjectName.isNotEmpty;
+
+  @computed
+  bool get isAddUserButtonEnabled => _addUserEmail.isNotEmpty;
 
   @action
   Future<void> load() async {
@@ -97,13 +102,15 @@ abstract class _ProjectDetailsStore with Store {
   }
 
   @action
-  Future<void> addUser({required String userEmail}) async {
+  Future<void> addUser() async {
     try {
       await _projectDetailsUseCase.addUserToProject(
         projectId: _project.id,
-        userEmail: userEmail,
+        userEmail: _addUserEmail,
       );
-      // TODO(naz): reload details?
+      await _loadProjectDetails();
+      await _homeNotifier.loadProjects();
+      _isAddUserSuccessful = true;
     } catch (error) {
       _errorMessage = _coreErrorFormatter.formatError(error);
     }
@@ -130,10 +137,19 @@ abstract class _ProjectDetailsStore with Store {
   void resetNewProjectName() => _newProjectName = '';
 
   @action
+  void updateAddUserEmail(String email) => _addUserEmail = email;
+
+  @action
+  void resetAddUserEmail() => _addUserEmail = '';
+
+  @action
   void resetIsProjectRenamedSuccessfully() => _isProjectRenamedSuccessfully = false;
 
   @action
   void resetIsProjectDeletedSuccessfully() => _isProjectDeletedSuccessfully = false;
+
+  @action
+  void resetIsAddUserSuccessful() => _isAddUserSuccessful = false;
 
   @action
   void resetErrorMessage() => _errorMessage = null;

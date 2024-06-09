@@ -20,32 +20,30 @@ class _ProjectSettingsUsersContentComponentState extends State<ProjectSettingsUs
 
   @override
   Widget build(BuildContext context) => Observer(
-        builder: (context) => Expanded(
-          child: Column(children: [
-            const SizedBox(height: 20),
-            HeaderComponent(
-              title: AppLocalizations.of(context).projectSettingsUsersCount(_store.usersCount),
-              buttonTitle: AppLocalizations.of(context).projectSettingsAddNewUserButton,
-              onPressed: HomeNavigator.of(context).navigateToProjectSettingsAddUser,
-            ),
-            const SizedBox(height: 24),
-            Expanded(
-              child: ListView.separated(
-                itemCount: _store.usersCount,
-                itemBuilder: (context, index) => AppActionButtonComponent(
-                  title: _store.project.users[index].email,
-                  trailing: IconButton(
-                    onPressed: () => _store.deleteUser(userEmail: _store.project.users[index].email),
-                    icon: Icon(
-                      Icons.delete_rounded,
-                      color: ProjectDetailsColorTheme.of(context).projectSettingsDeleteUserIconColor,
-                    ),
+        builder: (context) => Column(children: [
+          const SizedBox(height: 20),
+          HeaderComponent(
+            title: AppLocalizations.of(context).projectSettingsUsersCount(_store.usersCount),
+            buttonTitle: AppLocalizations.of(context).projectSettingsAddNewUserButton,
+            onPressed: HomeNavigator.of(context).navigateToProjectSettingsAddUser,
+          ),
+          const SizedBox(height: 24),
+          Expanded(
+            child: ListView.separated(
+              itemCount: _store.usersCount,
+              itemBuilder: (context, index) => AppActionButtonComponent(
+                title: _store.project.users[index].email,
+                trailing: IconButton(
+                  onPressed: () => _store.deleteUser(userEmail: _store.project.users[index].email),
+                  icon: Icon(
+                    Icons.delete_rounded,
+                    color: ProjectDetailsColorTheme.of(context).projectSettingsDeleteUserIconColor,
                   ),
                 ),
-                separatorBuilder: (context, index) => const SizedBox(height: 12),
               ),
-            )
-          ]),
-        ),
+              separatorBuilder: (context, index) => const SizedBox(height: 12),
+            ),
+          )
+        ]),
       );
 }

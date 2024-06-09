@@ -101,5 +101,9 @@
       }
     }
   },
-  "projectSettingsAddNewUserButton": "Add new user"
+  "projectSettingsAddNewUserButton": "Add new user",
+  "projectSettingsAddUserTitle": "Add user",
+  "projectSettingsUserEmailLabel": "User email",
+  "projectSettingsEnterUsersEmailHint": "Enter user's email",
+  "projectSettingsAddButton": "Add"
 }
