@@ -1,9 +1,14 @@
+import 'package:construction_assistant_app/app/app_dependencies.dart';
 import 'package:construction_assistant_app/app/utils/core/core_error.dart';
 import 'package:construction_assistant_app/app/utils/network/response/core_error_response.dart';
 import 'package:dio/dio.dart';
+import 'package:logger/logger.dart';
 
 class CoreErrorHandler {
+  final Logger _logger = getIt<Logger>();
+
   Never throwErrorFrom(dynamic error) {
+    _logger.e('Error caught', error: error);
     if (error is! DioException || error.response?.data == null) {
       throw CoreUnknownError();
     }

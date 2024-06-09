@@ -10,6 +10,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
+import 'package:logger/logger.dart';
 
 final getIt = GetIt.instance;
 
@@ -31,6 +32,9 @@ class _AppDependenciesState extends State<AppDependencies> with DependencyScope 
 
   @override
   void registerDependencies() {
+    getIt.registerLazySingleton<Logger>(
+      () => Logger(printer: PrettyPrinter(errorMethodCount: 12)),
+    );
     getIt.registerLazySingleton<DioGeneralClient>(() => DioGeneralClient(dio: Dio()));
     getIt.registerLazySingleton<DioAuthorizedClient>(
       () => DioAuthorizedClient(dio: Dio())..addRefreshTokenInterceptor(),
