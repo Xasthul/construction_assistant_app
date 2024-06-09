@@ -1,4 +1,5 @@
 import 'package:construction_assistant_app/home/profile/profile_component.dart';
+import 'package:construction_assistant_app/home/utils/component/home_create_project_component.dart';
 import 'package:flutter/material.dart';
 
 class HomeNavigator extends InheritedWidget {
@@ -38,6 +39,12 @@ class HomeNavigator extends InheritedWidget {
   void navigateToProfileComponent() => _navigationKey.currentState?.push(
         MaterialPageRoute(
           builder: (context) => const ProfileComponent(),
+        ),
+      );
+
+  void navigateToCreateProjectComponent() => _navigationKey.currentState?.push(
+        MaterialPageRoute(
+          builder: (context) => const HomeCreateProjectComponent(),
         ),
       );
 }

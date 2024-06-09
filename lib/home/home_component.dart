@@ -1,6 +1,7 @@
 import 'package:construction_assistant_app/app/app_dependencies.dart';
 import 'package:construction_assistant_app/home/home_dependencies.dart';
 import 'package:construction_assistant_app/home/store/home_store.dart';
+import 'package:construction_assistant_app/home/utils/component/home_add_project_button_component.dart';
 import 'package:construction_assistant_app/home/utils/component/home_empty_content_component.dart';
 import 'package:construction_assistant_app/home/utils/component/home_header_component.dart';
 import 'package:construction_assistant_app/home/utils/navigator/home_navigator.dart';
@@ -38,6 +39,8 @@ class _HomeComponentBaseState extends State<_HomeComponentBase> {
               SizedBox(height: 8),
               HomeEmptyContentComponent(),
               SizedBox(height: 8),
+              HomeAddProjectButtonComponent(),
+              SizedBox(height: 16),
             ]),
           ),
         ),
