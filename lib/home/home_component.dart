@@ -40,7 +40,6 @@ class _HomeComponentBaseState extends State<_HomeComponentBase> with ReactionDis
             ScaffoldMessenger.of(context).showAppErrorSnackBar(
               context: context,
               title: errorMessage,
-              shouldHideKeyboard: true,
             );
             _store.resetErrorMessage();
           }

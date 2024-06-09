@@ -22,14 +22,9 @@ class HomeUseCase {
     }
   }
 
-  Future<List<Project>> createProject() async {
+  Future<void> createProject({required String projectName}) async {
     try {
-      final projectsResponse = await _homeService.getProjects();
-      return projectsResponse
-          .map(
-            (projectResponse) => _homeMapper.mapProjectResponseToDomain(projectResponse),
-      )
-          .toList();
+      await _homeService.createProject(projectName: projectName);
     } catch (error) {
       _coreErrorHandler.throwErrorFrom(error);
     }

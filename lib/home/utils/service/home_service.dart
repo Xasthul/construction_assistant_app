@@ -10,7 +10,14 @@ class HomeService {
   Future<List<ProjectResponse>> getProjects() async {
     final response = await _client.get('${AppConstants.serviceUrl}/projects');
     final appDataResponse = AppDataResponse.fromJson(response);
-    final projectsResponse = appDataResponse.data as List<Map<String, dynamic>>;
-    return projectsResponse.map((projectResponse) => ProjectResponse.fromJson(projectResponse)).toList();
+    final projectsResponse = appDataResponse.data as List<dynamic>;
+    return projectsResponse
+        .map((dynamic projectResponse) => ProjectResponse.fromJson(projectResponse as Map<String, dynamic>))
+        .toList();
   }
+
+  Future<void> createProject({required String projectName}) async => _client.post(
+        '${AppConstants.serviceUrl}/projects/create',
+        body: {'title': projectName},
+      );
 }
