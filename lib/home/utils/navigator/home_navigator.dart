@@ -2,6 +2,9 @@ import 'package:construction_assistant_app/home/create_project/create_project_co
 import 'package:construction_assistant_app/home/profile/profile_component.dart';
 import 'package:construction_assistant_app/home/project_details/create_step/create_step_component.dart';
 import 'package:construction_assistant_app/home/project_details/project_details_component.dart';
+import 'package:construction_assistant_app/home/project_details/utils/component/project_details_settings/project_details_settings_component.dart';
+import 'package:construction_assistant_app/home/project_details/utils/component/project_details_settings/project_settings_rename_component.dart';
+import 'package:construction_assistant_app/home/project_details/utils/component/project_details_settings/project_settings_users_component.dart';
 import 'package:construction_assistant_app/home/utils/entity/project.dart';
 import 'package:flutter/material.dart';
 
@@ -39,13 +42,13 @@ class HomeNavigator extends InheritedWidget {
 
   void popUntilFirst() => _navigationKey.currentState?.popUntil((route) => route.isFirst);
 
-  void navigateToProfileComponent() => _navigationKey.currentState?.push(
+  void navigateToProfile() => _navigationKey.currentState?.push(
         MaterialPageRoute(
           builder: (context) => const ProfileComponent(),
         ),
       );
 
-  void navigateToCreateProjectComponent() => _navigationKey.currentState?.push(
+  void navigateToCreateProject() => _navigationKey.currentState?.push(
         MaterialPageRoute(
           builder: (context) => const CreateProjectComponent(),
         ),
@@ -60,6 +63,24 @@ class HomeNavigator extends InheritedWidget {
   void navigateToCreateStep() => _navigationKey.currentState?.push(
         MaterialPageRoute(
           builder: (context) => const CreateStepComponent(),
+        ),
+      );
+
+  void navigateToProjectDetailsSettings() => _navigationKey.currentState?.push(
+        MaterialPageRoute(
+          builder: (context) => const ProjectDetailsSettingsComponent(),
+        ),
+      );
+
+  void navigateToProjectSettingsRename() => _navigationKey.currentState?.push(
+        MaterialPageRoute(
+          builder: (context) => const ProjectSettingsRenameComponent(),
+        ),
+      );
+
+  void navigateToProjectSettingsUsers() => _navigationKey.currentState?.push(
+        MaterialPageRoute(
+          builder: (context) => const ProjectSettingsUsersComponent(),
         ),
       );
 }

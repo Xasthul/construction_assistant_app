@@ -8,18 +8,23 @@ class AppActionButtonComponent extends StatelessWidget {
     super.key,
     required String title,
     required VoidCallback onPressed,
+    bool isWarning = false,
   })  : _title = title,
-        _onPressed = onPressed;
+        _onPressed = onPressed,
+        _isWarning = isWarning;
 
   final String _title;
   final VoidCallback _onPressed;
+  final bool _isWarning;
 
   @override
   Widget build(BuildContext context) => FilledButton(
         onPressed: _onPressed,
         style: ButtonStyle(
           backgroundColor: WidgetStateProperty.all(
-            AppActionButtonColorTheme.of(context).defaultBackgroundColor,
+            _isWarning
+                ? AppActionButtonColorTheme.of(context).warningBackgroundColor
+                : AppActionButtonColorTheme.of(context).defaultBackgroundColor,
           ),
           textStyle: WidgetStateProperty.all(
             AppTextTheme.of(context).body2Medium,
@@ -38,7 +43,9 @@ class AppActionButtonComponent extends StatelessWidget {
             ),
           ),
           overlayColor: WidgetStateProperty.all(
-            AppActionButtonColorTheme.of(context).defaultPressedColor,
+            _isWarning
+                ? AppActionButtonColorTheme.of(context).warningPressedColor
+                : AppActionButtonColorTheme.of(context).defaultPressedColor,
           ),
         ),
         child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
@@ -46,7 +53,9 @@ class AppActionButtonComponent extends StatelessWidget {
             child: Text(
               _title,
               style: TextStyle(
-                color: CommonColorTheme.of(context).titleTextColor,
+                color: _isWarning
+                    ? AppActionButtonColorTheme.of(context).warningForegroundColor
+                    : CommonColorTheme.of(context).titleTextColor,
               ),
               overflow: TextOverflow.ellipsis,
             ),
@@ -56,7 +65,9 @@ class AppActionButtonComponent extends StatelessWidget {
             child: Icon(
               Icons.arrow_forward_ios_rounded,
               size: 16,
-              color: AppActionButtonColorTheme.of(context).defaultIconColor,
+              color: _isWarning
+                  ? AppActionButtonColorTheme.of(context).warningForegroundColor
+                  : AppActionButtonColorTheme.of(context).defaultIconColor,
             ),
           ),
         ]),

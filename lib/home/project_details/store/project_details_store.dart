@@ -63,7 +63,7 @@ abstract class _ProjectDetailsStore with Store {
   }
 
   @action
-  Future<void> deleteProject({required String newProjectName}) async {
+  Future<void> deleteProject() async {
     try {
       await _projectDetailsUseCase.deleteProject(projectId: _project.id);
       // TODO(naz): navigate back to home

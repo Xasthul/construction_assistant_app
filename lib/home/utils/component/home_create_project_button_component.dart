@@ -9,6 +9,6 @@ class HomeCreateProjectButtonComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) => AppFilledButtonComponent(
         title: AppLocalizations.of(context).homeCreateProjectButton,
-        onPressed: HomeNavigator.of(context).navigateToCreateProjectComponent,
+        onPressed: HomeNavigator.of(context).navigateToCreateProject,
       );
 }

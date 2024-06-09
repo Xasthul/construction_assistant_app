@@ -31,7 +31,7 @@ class _HomeContentHeaderComponentState extends State<HomeContentHeaderComponent>
         const SizedBox(width: 8),
         AppTextButtonComponent(
           title: AppLocalizations.of(context).homeCreateNewProjectButton,
-          onPressed: HomeNavigator.of(context).navigateToCreateProjectComponent,
+          onPressed: HomeNavigator.of(context).navigateToCreateProject,
         ),
       ]);
 }

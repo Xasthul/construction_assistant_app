@@ -25,7 +25,7 @@ class HomeHeaderComponent extends StatelessWidget {
           height: 40,
           width: 40,
           child: FilledButton(
-            onPressed: HomeNavigator.of(context).navigateToProfileComponent,
+            onPressed: HomeNavigator.of(context).navigateToProfile,
             style: ButtonStyle(
               shape: WidgetStateProperty.all(
                 const CircleBorder(),

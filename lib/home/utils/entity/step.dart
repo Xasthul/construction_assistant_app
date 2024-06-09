@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 
 class Step extends Equatable {
-  Step({
+  const Step({
     required this.id,
     required this.projectId,
     required this.title,
@@ -22,7 +22,8 @@ class Step extends Equatable {
   final String? completedBy;
 
   @override
-  List<Object?> get props => [
+  List<Object?> get props =>
+      [
         id,
         projectId,
         title,

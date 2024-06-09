@@ -79,5 +79,10 @@
   "projectDetailsNoStepsLabel": "No steps",
   "projectDetailsCreateFirstStepLabel": "Create the first step for this project",
   "projectDetailsAddStepButton": "Add step",
-  "projectDetailsAddNewStepButton": "Add new step"
+  "projectDetailsAddNewStepButton": "Add new step",
+  "@-------------------------ProjectSettings-------------------------": {},
+  "projectSettingsTitle": "Project settings",
+  "projectSettingsRenameButton": "Rename project",
+  "projectSettingsUsersButton": "Users",
+  "projectSettingsDeleteButton": "Delete project"
 }
