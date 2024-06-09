@@ -48,10 +48,11 @@
   "homeNoProjectsTitle": "No projects",
   "homeInOrderToStartLabel": "In order to start add you first project",
   "homeAddProjectButton": "Add project",
-  "homeCreateProjectTitle": "Create project",
-  "homeProjectNameLabel": "Project name",
-  "homeEnterProjectNameHint": "Enter project name",
-  "homeCreateProjectButton": "Create",
+  "@-------------------------CreateProject-------------------------": {},
+  "createProjectTitle": "Create project",
+  "createProjectNameLabel": "Project name",
+  "createProjectEnterProjectNameHint": "Enter project name",
+  "createProjectCreateButton": "Create",
   "@-------------------------Profile-------------------------": {},
   "profileLogoutButton": "Logout"
 }

@@ -15,17 +15,25 @@ abstract class _CreateProjectStore with Store {
   final CoreErrorFormatter _coreErrorFormatter = getIt<CoreErrorFormatter>();
 
   @readonly
+  String _projectName = '';
+  @readonly
   bool _isProjectCreatedSuccessfully = false;
   @readonly
   bool _isLoading = false;
   @readonly
   String? _errorMessage;
 
+  @computed
+  bool get isCreateProjectButtonEnabled => _projectName.isNotEmpty;
+
   @action
-  Future<void> createProject({required String projectName}) async {
+  void updateProjectName(String name) => _projectName = name;
+
+  @action
+  Future<void> createProject() async {
     _isLoading = true;
     try {
-      await _homeUseCase.createProject(projectName: projectName);
+      await _homeUseCase.createProject(projectName: _projectName);
       await _homeNotifier.loadProjects();
       _isProjectCreatedSuccessfully = true;
     } catch (error) {

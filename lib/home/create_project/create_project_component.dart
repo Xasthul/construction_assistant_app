@@ -11,6 +11,7 @@ import 'package:construction_assistant_app/home/create_project/store/create_proj
 import 'package:construction_assistant_app/home/utils/navigator/home_navigator.dart';
 import 'package:construction_assistant_app/l10n/generated/app_localizations.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:mobx/mobx.dart';
 
 class CreateProjectComponent extends StatelessWidget {
@@ -63,7 +64,7 @@ class _CreateProjectComponentBaseState extends State<_CreateProjectComponentBase
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
           title: Text(
-            AppLocalizations.of(context).homeCreateProjectTitle,
+            AppLocalizations.of(context).createProjectTitle,
             style: AppTextTheme.of(context).largeTitleBold.copyWith(
                   color: CommonColorTheme.of(context).titleTextColor,
                 ),
@@ -78,16 +79,19 @@ class _CreateProjectComponentBaseState extends State<_CreateProjectComponentBase
             child: Column(children: [
               const SizedBox(height: 40),
               AppTextFieldComponent(
-                title: AppLocalizations.of(context).homeProjectNameLabel,
-                hint: AppLocalizations.of(context).homeEnterProjectNameHint,
+                title: AppLocalizations.of(context).createProjectNameLabel,
+                hint: AppLocalizations.of(context).createProjectEnterProjectNameHint,
                 controller: _controller,
                 maxLength: 30,
                 textInputAction: TextInputAction.done,
+                onChanged: _store.updateProjectName,
               ),
               const SizedBox(height: 32),
-              AppFilledButtonComponent(
-                title: AppLocalizations.of(context).homeCreateProjectButton,
-                onPressed: () => _store.createProject(projectName: _controller.text),
+              Observer(
+                builder: (context) => AppFilledButtonComponent(
+                  title: AppLocalizations.of(context).createProjectCreateButton,
+                  onPressed: _store.isCreateProjectButtonEnabled ? _store.createProject : null,
+                ),
               ),
               const SizedBox(height: 16),
             ]),
