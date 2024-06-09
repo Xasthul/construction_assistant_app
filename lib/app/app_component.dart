@@ -1,5 +1,6 @@
 import 'package:construction_assistant_app/app/app_dependencies.dart';
 import 'package:construction_assistant_app/app/store/app_store.dart';
+import 'package:construction_assistant_app/app/utils/component/app_circular_progress_indicator_component.dart';
 import 'package:construction_assistant_app/app/utils/entity/app_navigation_state.dart';
 import 'package:construction_assistant_app/home/home_component.dart';
 import 'package:construction_assistant_app/login/login_component.dart';
@@ -26,9 +27,17 @@ class _AppComponentBaseState extends State<_AppComponentBase> {
   final AppStore _store = getIt<AppStore>();
 
   @override
-  Widget build(BuildContext context) => Observer(
-      builder: (context) => switch (_store.navigationState) {
-            AppNavigationState.login => const LoginComponent(),
-            AppNavigationState.home => const HomeComponent()
-          });
+  Widget build(BuildContext context) => Observer(builder: (context) {
+        if (_store.isLoading) {
+          return const Scaffold(
+            body: Center(
+              child: AppCircularProgressIndicatorComponent(),
+            ),
+          );
+        }
+        return switch (_store.navigationState) {
+          AppNavigationState.login => const LoginComponent(),
+          AppNavigationState.home => const HomeComponent()
+        };
+      });
 }
