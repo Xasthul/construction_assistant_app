@@ -1,3 +1,4 @@
+import 'package:construction_assistant_app/app/utils/component/app_action_button/app_action_button_arrow_component.dart';
 import 'package:construction_assistant_app/app/utils/theme/app_action_button_color_theme.dart';
 import 'package:construction_assistant_app/app/utils/theme/app_text_theme.dart';
 import 'package:construction_assistant_app/app/utils/theme/common_color_theme.dart';
@@ -7,14 +8,17 @@ class AppActionButtonComponent extends StatelessWidget {
   const AppActionButtonComponent({
     super.key,
     required String title,
-    required VoidCallback onPressed,
+    VoidCallback? onPressed,
+    Widget? trailing,
     bool isWarning = false,
   })  : _title = title,
         _onPressed = onPressed,
+        _trailing = trailing,
         _isWarning = isWarning;
 
   final String _title;
-  final VoidCallback _onPressed;
+  final VoidCallback? _onPressed;
+  final Widget? _trailing;
   final bool _isWarning;
 
   @override
@@ -62,13 +66,7 @@ class AppActionButtonComponent extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.only(left: 16),
-            child: Icon(
-              Icons.arrow_forward_ios_rounded,
-              size: 16,
-              color: _isWarning
-                  ? AppActionButtonColorTheme.of(context).warningForegroundColor
-                  : AppActionButtonColorTheme.of(context).defaultIconColor,
-            ),
+            child: _trailing ?? AppActionButtonArrowComponent(isWarning: _isWarning),
           ),
         ]),
       );

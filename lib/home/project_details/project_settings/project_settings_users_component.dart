@@ -28,13 +28,12 @@ class _ProjectSettingsUsersComponentState extends State<ProjectSettingsUsersComp
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Observer(
-              builder: (context) => Column(children: [
-                const SizedBox(height: 20),
-                if (_store.project.users.isNotEmpty)
-                  const ProjectSettingsUsersEmptyContentComponent()
-                else
-                  const ProjectSettingsUsersContentComponent(),
-              ]),
+              builder: (context) {
+                if (_store.project.users.isNotEmpty) {
+                  return const ProjectSettingsUsersContentComponent();
+                }
+                return const ProjectSettingsUsersEmptyContentComponent();
+              },
             ),
           ),
         ),

@@ -39,6 +39,9 @@ abstract class _ProjectDetailsStore with Store {
   int get stepsCount => _steps.length;
 
   @computed
+  int get usersCount => _project.users.length;
+
+  @computed
   bool get isUpdateProjectNameButtonEnabled => _newProjectName.isNotEmpty;
 
   @action
@@ -113,7 +116,8 @@ abstract class _ProjectDetailsStore with Store {
         projectId: _project.id,
         userEmail: userEmail,
       );
-      // TODO(naz): reload details
+      await _loadProjectDetails();
+      await _homeNotifier.loadProjects();
     } catch (error) {
       _errorMessage = _coreErrorFormatter.formatError(error);
     }

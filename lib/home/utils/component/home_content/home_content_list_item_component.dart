@@ -1,4 +1,4 @@
-import 'package:construction_assistant_app/app/utils/component/app_action_button_component.dart';
+import 'package:construction_assistant_app/app/utils/component/app_action_button/app_action_button_component.dart';
 import 'package:flutter/material.dart';
 
 class HomeContentListItemComponent extends StatelessWidget {
