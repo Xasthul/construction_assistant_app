@@ -47,5 +47,5 @@ class AppTextFieldColorTheme {
   final Color errorIconColor;
 
   static AppTextFieldColorTheme of(BuildContext context) =>
-      context.dependOnInheritedWidgetOfExactType<AppTheme>()!.appColorTheme.appTextFieldColorTheme;
+      context.dependOnInheritedWidgetOfExactType<AppTheme>()!.appColorTheme.commonColorTheme.appTextFieldColorTheme;
 }

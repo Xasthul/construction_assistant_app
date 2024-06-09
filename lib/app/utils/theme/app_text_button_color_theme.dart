@@ -20,5 +20,5 @@ class AppTextButtonColorTheme {
   final Color overlayColor;
 
   static AppTextButtonColorTheme of(BuildContext context) =>
-      context.dependOnInheritedWidgetOfExactType<AppTheme>()!.appColorTheme.appTextButtonColorTheme;
+      context.dependOnInheritedWidgetOfExactType<AppTheme>()!.appColorTheme.commonColorTheme.appTextButtonColorTheme;
 }

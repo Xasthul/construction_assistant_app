@@ -29,5 +29,5 @@ class AppFilledButtonColorTheme {
   final Color filledButtonDisabledForegroundColor;
 
   static AppFilledButtonColorTheme of(BuildContext context) =>
-      context.dependOnInheritedWidgetOfExactType<AppTheme>()!.appColorTheme.appFilledButtonColorTheme;
+      context.dependOnInheritedWidgetOfExactType<AppTheme>()!.appColorTheme.commonColorTheme.appFilledButtonColorTheme;
 }

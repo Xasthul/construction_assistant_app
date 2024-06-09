@@ -26,5 +26,5 @@ class AppSnackBarColorTheme {
   final Color snackBarErrorBodyTextColor;
 
   static AppSnackBarColorTheme of(BuildContext context) =>
-      context.dependOnInheritedWidgetOfExactType<AppTheme>()!.appColorTheme.appSnackBarColorTheme;
+      context.dependOnInheritedWidgetOfExactType<AppTheme>()!.appColorTheme.commonColorTheme.appSnackBarColorTheme;
 }
