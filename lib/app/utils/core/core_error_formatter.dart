@@ -21,7 +21,8 @@ class CoreErrorFormatter {
         CorePreviousStepNotCompletedError() => _appLocalizations.coreSomethingWentWrongError,
         CoreEmailAlreadyRegisteredError() => _appLocalizations.coreEmailAlreadyRegisteredError,
         CoreWrongCredentialsError() => _appLocalizations.coreWrongCredentialsError,
-        CoreInvalidRefreshTokenError() => _appLocalizations.coreInvalidRefreshTokenError,
+        CoreInvalidRefreshTokenError() => _appLocalizations.coreSomethingWentWrongError,
+        CoreInvalidAccessTokenError() => _appLocalizations.coreInvalidAccessTokenError,
         _ => _appLocalizations.coreUnknownError,
       };
     }

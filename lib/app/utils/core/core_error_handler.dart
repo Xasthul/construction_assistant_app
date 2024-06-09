@@ -23,6 +23,7 @@ class CoreErrorHandler {
       12 => throw CoreEmailAlreadyRegisteredError(),
       13 => throw CoreWrongCredentialsError(),
       14 => throw CoreInvalidRefreshTokenError(),
+      15 => throw CoreInvalidAccessTokenError(),
       _ => throw CoreUnknownError(),
     };
   }

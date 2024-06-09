@@ -28,4 +28,6 @@ class CoreWrongCredentialsError extends CoreError {}
 
 class CoreInvalidRefreshTokenError extends CoreError {}
 
+class CoreInvalidAccessTokenError extends CoreError {}
+
 class CoreUnknownError extends CoreError {}

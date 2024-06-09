@@ -5,7 +5,7 @@
   "coreWrongOldPasswordError": "The old password is invalid. Please check and try again.",
   "coreEmailAlreadyRegisteredError": "The email address you provided is already registered. Please use a different email or try logging in.",
   "coreWrongCredentialsError": "The credentials are incorrect. Please try again.",
-  "coreInvalidRefreshTokenError": "The session has been expired. Please login again.",
+  "coreInvalidAccessTokenError": "The session has been expired. Please login again.",
   "coreSomethingWentWrongError": "Something went wrong. Please try again later.",
   "coreUnknownError": "Sorry, an unexpected error occurred. Please try again later.",
   "@-------------------------Login-------------------------": {},
