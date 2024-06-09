@@ -3,6 +3,7 @@ import 'package:construction_assistant_app/app/utils/component/app_filled_button
 import 'package:construction_assistant_app/app/utils/component/scrollable_content_component.dart';
 import 'package:construction_assistant_app/home/home_dependencies.dart';
 import 'package:construction_assistant_app/home/store/home_store.dart';
+import 'package:construction_assistant_app/home/utils/navigator/home_navigator.dart';
 import 'package:construction_assistant_app/l10n/generated/app_localizations.dart';
 import 'package:flutter/material.dart';
 
@@ -10,8 +11,10 @@ class HomeComponent extends StatelessWidget {
   const HomeComponent({super.key});
 
   @override
-  Widget build(BuildContext context) => const HomeDependencies(
-        child: _HomeComponentBase(),
+  Widget build(BuildContext context) => HomeDependencies(
+        child: HomeNavigator(
+          child: const _HomeComponentBase(),
+        ),
       );
 }
 
