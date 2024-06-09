@@ -7,7 +7,7 @@ class ProjectDetailsSettingsButtonComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => IconButton(
-        onPressed: HomeNavigator.of(context).navigateToProjectDetailsSettings,
+        onPressed: HomeNavigator.of(context).navigateToProjectSettings,
         icon: Icon(
           Icons.settings,
           color: ProjectDetailsColorTheme.of(context).projectSettingsIconColor,
