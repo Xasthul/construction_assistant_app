@@ -89,5 +89,17 @@
   "projectSettingsProjectNameLabel": "Project name",
   "projectSettingsEnterProjectNameHint": "Project name",
   "projectSettingsUpdateButton": "Update",
-  "projectSettingsUsersTitle": "Project users"
+  "projectSettingsProjectUsersTitle": "Project users",
+  "projectSettingsYouAreTheOnlyUserLabel": "You are the only user",
+  "projectSettingsAddMoreUsersLabel": "Add more users to work on this project together",
+  "projectSettingsAddUserButton": "Add user",
+  "projectSettingsUsersCount": "Users: {usersCount}",
+  "@projectSettingsUsersCount": {
+    "usersCount": {
+      "projectsCount": {
+        "type": "int"
+      }
+    }
+  },
+  "projectSettingsAddNewUserButton": "Add new user"
 }

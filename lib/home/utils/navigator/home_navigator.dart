@@ -2,6 +2,7 @@ import 'package:construction_assistant_app/home/create_project/create_project_co
 import 'package:construction_assistant_app/home/profile/profile_component.dart';
 import 'package:construction_assistant_app/home/project_details/create_step/create_step_component.dart';
 import 'package:construction_assistant_app/home/project_details/project_details_component.dart';
+import 'package:construction_assistant_app/home/project_details/project_settings/project_settings_add_user_component.dart';
 import 'package:construction_assistant_app/home/project_details/project_settings/project_settings_component.dart';
 import 'package:construction_assistant_app/home/project_details/project_settings/project_settings_rename_component.dart';
 import 'package:construction_assistant_app/home/project_details/project_settings/project_settings_users_component.dart';
@@ -81,6 +82,12 @@ class HomeNavigator extends InheritedWidget {
   void navigateToProjectSettingsUsers() => _navigationKey.currentState?.push(
         MaterialPageRoute(
           builder: (context) => const ProjectSettingsUsersComponent(),
+        ),
+      );
+
+  void navigateToProjectSettingsAddUser() => _navigationKey.currentState?.push(
+        MaterialPageRoute(
+          builder: (context) => const ProjectSettingsAddUserComponent(),
         ),
       );
 }
