@@ -14,13 +14,11 @@ class LoginEmailTextFieldComponent extends StatefulWidget {
 class _LoginEmailTextFieldComponentState extends State<LoginEmailTextFieldComponent> {
   final LoginStore _store = getIt<LoginStore>();
   late TextEditingController _emailController;
-  late FocusNode _emailFocusNode;
 
   @override
   void initState() {
     super.initState();
     _emailController = TextEditingController();
-    _emailFocusNode = FocusNode();
   }
 
   @override
@@ -30,7 +28,6 @@ class _LoginEmailTextFieldComponentState extends State<LoginEmailTextFieldCompon
         maxLength: 300,
         textInputAction: TextInputAction.next,
         hint: AppLocalizations.of(context).loginEnterYourEmailHint,
-        focusNode: _emailFocusNode,
         onChanged: (emailText) => _store.updateLoginState(email: emailText),
         textInputType: TextInputType.emailAddress,
       );
@@ -38,7 +35,6 @@ class _LoginEmailTextFieldComponentState extends State<LoginEmailTextFieldCompon
   @override
   void dispose() {
     _emailController.dispose();
-    _emailFocusNode.dispose();
     super.dispose();
   }
 }

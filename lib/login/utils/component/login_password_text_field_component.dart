@@ -16,13 +16,11 @@ class LoginPasswordTextFieldComponent extends StatefulWidget {
 class _LoginPasswordTextFieldComponentState extends State<LoginPasswordTextFieldComponent> {
   final LoginStore _store = getIt<LoginStore>();
   late TextEditingController _passwordController;
-  late FocusNode _passwordFocusNode;
 
   @override
   void initState() {
     super.initState();
     _passwordController = TextEditingController();
-    _passwordFocusNode = FocusNode();
   }
 
   @override
@@ -34,7 +32,6 @@ class _LoginPasswordTextFieldComponentState extends State<LoginPasswordTextField
           obscureText: _store.obscurePasswordField,
           textInputAction: TextInputAction.done,
           hint: AppLocalizations.of(context).loginEnterYourPasswordHint,
-          focusNode: _passwordFocusNode,
           onChanged: (text) => _store.updateLoginState(password: text),
           trailingIcon: _store.obscurePasswordField //
               ? AppAssets.iconVisibility
@@ -49,7 +46,6 @@ class _LoginPasswordTextFieldComponentState extends State<LoginPasswordTextField
   @override
   void dispose() {
     _passwordController.dispose();
-    _passwordFocusNode.dispose();
     super.dispose();
   }
 }
