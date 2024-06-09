@@ -6,6 +6,7 @@ class ProjectDetailsContentComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => const Column(children: [
+        SizedBox(height: 20),
         ProjectDetailsHeaderComponent(),
       ]);
 }
