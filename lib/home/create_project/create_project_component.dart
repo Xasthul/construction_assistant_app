@@ -1,11 +1,10 @@
 import 'package:construction_assistant_app/app/app_dependencies.dart';
+import 'package:construction_assistant_app/app/utils/component/app_bar_component.dart';
 import 'package:construction_assistant_app/app/utils/component/app_filled_button_component.dart';
 import 'package:construction_assistant_app/app/utils/component/app_text_field/app_text_field_component.dart';
 import 'package:construction_assistant_app/app/utils/extension/app_snackbar_extension.dart';
 import 'package:construction_assistant_app/app/utils/helpers/after_layout.dart';
 import 'package:construction_assistant_app/app/utils/helpers/reaction_dispose.dart';
-import 'package:construction_assistant_app/app/utils/theme/app_text_theme.dart';
-import 'package:construction_assistant_app/app/utils/theme/common_color_theme.dart';
 import 'package:construction_assistant_app/home/create_project/create_project_dependencies.dart';
 import 'package:construction_assistant_app/home/create_project/store/create_project_store.dart';
 import 'package:construction_assistant_app/home/utils/navigator/home_navigator.dart';
@@ -62,16 +61,9 @@ class _CreateProjectComponentBaseState extends State<_CreateProjectComponentBase
 
   @override
   Widget build(BuildContext context) => Scaffold(
-        appBar: AppBar(
-          title: Text(
-            AppLocalizations.of(context).createProjectTitle,
-            style: AppTextTheme.of(context).largeTitleBold.copyWith(
-                  color: CommonColorTheme.of(context).titleTextColor,
-                ),
-          ),
-          leading: BackButton(
-            onPressed: HomeNavigator.of(context).pop,
-          ),
+        appBar: AppBarComponent(
+          title: AppLocalizations.of(context).createProjectTitle,
+          onBackButtonPressed: HomeNavigator.of(context).pop,
         ),
         body: SafeArea(
           child: Padding(

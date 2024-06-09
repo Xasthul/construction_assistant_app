@@ -16,8 +16,8 @@ class AppTextTheme {
     required this.overLineRegular,
     required this.body2Medium,
     required this.largeTitleBold,
-    required this.headline2Bold,
     required this.headline1Bold,
+    required this.headline2Bold,
     required this.body1Bold,
     required this.body2Bold,
     required this.buttonBold,
@@ -38,8 +38,8 @@ class AppTextTheme {
         overLineRegular: GoogleFonts.getFont('Montserrat', fontSize: 10),
         body2Medium: GoogleFonts.getFont('Montserrat', fontSize: 14, fontWeight: FontWeight.w500),
         largeTitleBold: GoogleFonts.getFont('Montserrat', fontSize: 32, fontWeight: FontWeight.w700),
-        headline2Bold: GoogleFonts.getFont('Montserrat', fontSize: 24, fontWeight: FontWeight.w700),
-        headline1Bold: GoogleFonts.getFont('Montserrat', fontSize: 20, fontWeight: FontWeight.w600),
+        headline1Bold: GoogleFonts.getFont('Montserrat', fontSize: 24, fontWeight: FontWeight.w700),
+        headline2Bold: GoogleFonts.getFont('Montserrat', fontSize: 20, fontWeight: FontWeight.w600),
         body1Bold: GoogleFonts.getFont('Montserrat', fontSize: 16, fontWeight: FontWeight.w700),
         body2Bold: GoogleFonts.getFont('Montserrat', fontSize: 14, fontWeight: FontWeight.w700),
         buttonBold: GoogleFonts.getFont('Montserrat', fontSize: 14, fontWeight: FontWeight.w700),
@@ -61,8 +61,8 @@ class AppTextTheme {
   final TextStyle body2Medium;
 
   final TextStyle largeTitleBold;
-  final TextStyle headline2Bold;
   final TextStyle headline1Bold;
+  final TextStyle headline2Bold;
   final TextStyle body1Bold;
   final TextStyle body2Bold;
   final TextStyle buttonBold;

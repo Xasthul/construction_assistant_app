@@ -15,6 +15,7 @@ class CommonColorTheme {
     required this.titleTextColor,
     required this.labelTextColor,
     required this.circularProgressIndicatorColor,
+    required this.appBarBackButtonColor,
   });
 
   factory CommonColorTheme.light() => CommonColorTheme(
@@ -25,6 +26,7 @@ class CommonColorTheme {
         titleTextColor: ColorConstants.grayscale900,
         labelTextColor: ColorConstants.grayscale600,
         circularProgressIndicatorColor: ColorConstants.primary500,
+        appBarBackButtonColor: ColorConstants.grayscale900,
       );
 
   final AppTextFieldColorTheme appTextFieldColorTheme;
@@ -34,6 +36,7 @@ class CommonColorTheme {
   final Color titleTextColor;
   final Color labelTextColor;
   final Color circularProgressIndicatorColor;
+  final Color appBarBackButtonColor;
 
   static CommonColorTheme of(BuildContext context) =>
       context.dependOnInheritedWidgetOfExactType<AppTheme>()!.appColorTheme.commonColorTheme;

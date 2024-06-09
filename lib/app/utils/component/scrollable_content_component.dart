@@ -32,7 +32,7 @@ class ScrollableContentComponent extends StatelessWidget {
           SliverAppBar.medium(
             title: Text(
               _appBarTitle,
-              style: AppTextTheme.of(context).largeTitleBold.copyWith(
+              style: AppTextTheme.of(context).headline1Bold.copyWith(
                     color: CommonColorTheme.of(context).titleTextColor,
                   ),
             ),
@@ -41,7 +41,7 @@ class ScrollableContentComponent extends StatelessWidget {
           SliverAppBar(
             title: Text(
               _staticAppBarTitle,
-              style: AppTextTheme.of(context).headline1Bold.copyWith(
+              style: AppTextTheme.of(context).headline2Bold.copyWith(
                     color: CommonColorTheme.of(context).titleTextColor,
                   ),
             ),
