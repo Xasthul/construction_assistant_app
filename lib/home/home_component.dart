@@ -5,6 +5,7 @@ import 'package:construction_assistant_app/app/utils/helpers/after_layout.dart';
 import 'package:construction_assistant_app/app/utils/helpers/reaction_dispose.dart';
 import 'package:construction_assistant_app/home/home_dependencies.dart';
 import 'package:construction_assistant_app/home/store/home_store.dart';
+import 'package:construction_assistant_app/home/utils/component/home_content/home_content_component.dart';
 import 'package:construction_assistant_app/home/utils/component/home_empty_content_component.dart';
 import 'package:construction_assistant_app/home/utils/component/home_header_component.dart';
 import 'package:construction_assistant_app/home/utils/navigator/home_navigator.dart';
@@ -59,10 +60,13 @@ class _HomeComponentBaseState extends State<_HomeComponentBase> with ReactionDis
                   );
                 }
                 return Column(children: [
-                  const SizedBox(height: 8),
+                  const SizedBox(height: 16),
                   const HomeHeaderComponent(),
                   const SizedBox(height: 8),
-                  if (_store.projects.isNotEmpty) const SizedBox() else const HomeEmptyContentComponent(),
+                  if (_store.projects.isNotEmpty)
+                    const HomeContentComponent() //
+                  else
+                    const HomeEmptyContentComponent(),
                 ]);
               },
             ),

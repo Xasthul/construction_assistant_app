@@ -20,6 +20,9 @@ abstract class _HomeStore with Store, HomeNotifier {
   @readonly
   String? _errorMessage;
 
+  @computed
+  int get projectsCount => _projects.length;
+
   @action
   Future<void> load() async => loadProjects();
 

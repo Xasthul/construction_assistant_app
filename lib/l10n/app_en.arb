@@ -47,7 +47,16 @@
   },
   "homeNoProjectsTitle": "No projects",
   "homeInOrderToStartLabel": "In order to start add you first project",
-  "homeAddProjectButton": "Add project",
+  "homeCreateProjectButton": "Create project",
+  "homeProjectsCount": "Projects: {projectsCount}",
+  "@homeProjectsCount": {
+    "placeholders": {
+      "projectsCount": {
+        "type": "int"
+      }
+    }
+  },
+  "homeCreateNewProjectButton": "Create new project",
   "@-------------------------CreateProject-------------------------": {},
   "createProjectTitle": "Create project",
   "createProjectNameLabel": "Project name",

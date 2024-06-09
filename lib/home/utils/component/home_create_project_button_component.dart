@@ -3,12 +3,12 @@ import 'package:construction_assistant_app/home/utils/navigator/home_navigator.d
 import 'package:construction_assistant_app/l10n/generated/app_localizations.dart';
 import 'package:flutter/material.dart';
 
-class HomeAddProjectButtonComponent extends StatelessWidget {
-  const HomeAddProjectButtonComponent({super.key});
+class HomeCreateProjectButtonComponent extends StatelessWidget {
+  const HomeCreateProjectButtonComponent({super.key});
 
   @override
   Widget build(BuildContext context) => AppFilledButtonComponent(
-        title: AppLocalizations.of(context).homeAddProjectButton,
+        title: AppLocalizations.of(context).homeCreateProjectButton,
         onPressed: HomeNavigator.of(context).navigateToCreateProjectComponent,
       );
 }

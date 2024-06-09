@@ -9,8 +9,9 @@ class HomeColorTheme {
     required this.profileButtonBackgroundColor,
     required this.profileButtonPressedColor,
     required this.profileButtonForegroundColor,
-    required this.changeChargerIconBackgroundColor,
-    required this.activeChargerLabelColor,
+    required this.projectListItemBackgroundColor,
+    required this.projectListItemPressedColor,
+    required this.projectListItemIconColor,
   });
 
   factory HomeColorTheme.light() => HomeColorTheme(
@@ -18,16 +19,18 @@ class HomeColorTheme {
         profileButtonBackgroundColor: ColorConstants.primary400,
         profileButtonPressedColor: ColorConstants.primary500,
         profileButtonForegroundColor: ColorConstants.white,
-        changeChargerIconBackgroundColor: ColorConstants.grayscale50,
-        activeChargerLabelColor: ColorConstants.grayscale300,
+        projectListItemBackgroundColor: ColorConstants.grayscale50,
+        projectListItemPressedColor: ColorConstants.grayscale100,
+        projectListItemIconColor: ColorConstants.grayscale900,
       );
 
   final ProfileColorTheme profileColorTheme;
   final Color profileButtonBackgroundColor;
   final Color profileButtonPressedColor;
   final Color profileButtonForegroundColor;
-  final Color changeChargerIconBackgroundColor;
-  final Color activeChargerLabelColor;
+  final Color projectListItemBackgroundColor;
+  final Color projectListItemPressedColor;
+  final Color projectListItemIconColor;
 
   static HomeColorTheme of(BuildContext context) =>
       context.dependOnInheritedWidgetOfExactType<AppTheme>()!.appColorTheme.homeColorTheme;

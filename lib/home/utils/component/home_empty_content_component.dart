@@ -1,6 +1,6 @@
 import 'package:construction_assistant_app/app/utils/theme/app_text_theme.dart';
 import 'package:construction_assistant_app/app/utils/theme/common_color_theme.dart';
-import 'package:construction_assistant_app/home/utils/component/home_add_project_button_component.dart';
+import 'package:construction_assistant_app/home/utils/component/home_create_project_button_component.dart';
 import 'package:construction_assistant_app/l10n/generated/app_localizations.dart';
 import 'package:flutter/material.dart';
 
@@ -30,7 +30,7 @@ class HomeEmptyContentComponent extends StatelessWidget {
             ]),
           ),
           const SizedBox(height: 8),
-          const HomeAddProjectButtonComponent(),
+          const HomeCreateProjectButtonComponent(),
           const SizedBox(height: 16),
         ]),
   );
