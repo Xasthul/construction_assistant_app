@@ -4,6 +4,7 @@ import 'package:construction_assistant_app/app/utils/theme/app_text_button_color
 import 'package:construction_assistant_app/app/utils/theme/app_text_field_color_theme.dart';
 import 'package:construction_assistant_app/app/utils/theme/app_theme.dart';
 import 'package:construction_assistant_app/app/utils/theme/common_color_theme.dart';
+import 'package:construction_assistant_app/app/utils/theme/home_color_theme.dart';
 import 'package:flutter/material.dart';
 
 class AppColorTheme {
@@ -13,6 +14,7 @@ class AppColorTheme {
     required this.appFilledButtonColorTheme,
     required this.appTextButtonColorTheme,
     required this.appSnackBarColorTheme,
+    required this.homeColorTheme,
   });
 
   factory AppColorTheme.light() => AppColorTheme(
@@ -21,6 +23,7 @@ class AppColorTheme {
         appFilledButtonColorTheme: AppFilledButtonColorTheme.light(),
         appTextButtonColorTheme: AppTextButtonColorTheme.light(),
         appSnackBarColorTheme: AppSnackBarColorTheme.light(),
+        homeColorTheme: HomeColorTheme.light(),
       );
 
   final CommonColorTheme commonColorTheme;
@@ -28,6 +31,7 @@ class AppColorTheme {
   final AppFilledButtonColorTheme appFilledButtonColorTheme;
   final AppTextButtonColorTheme appTextButtonColorTheme;
   final AppSnackBarColorTheme appSnackBarColorTheme;
+  final HomeColorTheme homeColorTheme;
 
   static AppColorTheme of(BuildContext context) =>
       context.dependOnInheritedWidgetOfExactType<AppTheme>()!.appColorTheme;

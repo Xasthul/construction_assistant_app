@@ -37,5 +37,13 @@
   "createAccountMinimumCharactersLongError": "Minimum 8 characters long, include at least one letter, one number and a special character",
   "createAccountPasswordsDontMatchError": "Passwords don't match",
   "@-------------------------Home-------------------------": {},
+  "homeHello": "Hello, {userName} \uD83D\uDC4B",
+  "@homeHello": {
+    "placeholders": {
+      "userName": {
+        "type": "String"
+      }
+    }
+  },
   "homeLogoutButton": "Logout"
 }
