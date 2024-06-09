@@ -1,5 +1,7 @@
 import 'package:construction_assistant_app/app/store/app_store.dart';
 import 'package:construction_assistant_app/app/utils/component/dependency_scope.dart';
+import 'package:construction_assistant_app/app/utils/core/core_error_formatter.dart';
+import 'package:construction_assistant_app/app/utils/core/core_error_handler.dart';
 import 'package:construction_assistant_app/app/utils/network/dio_authorized_client.dart';
 import 'package:construction_assistant_app/app/utils/network/dio_general_client.dart';
 import 'package:construction_assistant_app/app/utils/use_case/secure_storage.dart';
@@ -36,6 +38,8 @@ class _AppDependenciesState extends State<AppDependencies> with DependencyScope 
     getIt.registerLazySingleton<FlutterSecureStorage>(() => const FlutterSecureStorage());
     getIt.registerLazySingleton<SecureStorage>(() => SecureStorage());
     getIt.registerLazySingleton<AppLocalizations>(() => AppLocalizations.of(context));
+    getIt.registerLazySingleton<CoreErrorHandler>(() => CoreErrorHandler());
+    getIt.registerLazySingleton<CoreErrorFormatter>(() => CoreErrorFormatter());
     getIt.registerLazySingleton<AppStore>(() => AppStore()..load());
   }
 }
