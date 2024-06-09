@@ -1,10 +1,8 @@
 import 'package:construction_assistant_app/app/app_dependencies.dart';
-import 'package:construction_assistant_app/app/utils/component/app_bar_component.dart';
-import 'package:construction_assistant_app/app/utils/component/app_filled_button_component.dart';
-import 'package:construction_assistant_app/app/utils/component/app_text_field/app_text_field_component.dart';
 import 'package:construction_assistant_app/app/utils/helpers/after_layout.dart';
 import 'package:construction_assistant_app/app/utils/helpers/reaction_dispose.dart';
 import 'package:construction_assistant_app/home/project_details/store/project_details_store.dart';
+import 'package:construction_assistant_app/home/utils/component/one_text_field_component.dart';
 import 'package:construction_assistant_app/home/utils/navigator/home_navigator.dart';
 import 'package:construction_assistant_app/l10n/generated/app_localizations.dart';
 import 'package:flutter/material.dart';
@@ -40,41 +38,23 @@ class _ProjectSettingsRenameComponentState extends State<ProjectSettingsRenameCo
       );
 
   @override
-  Widget build(BuildContext context) => Scaffold(
-        appBar: AppBarComponent(
-          title: AppLocalizations.of(context).projectSettingsRenameTitle,
-          onBackButtonPressed: HomeNavigator.of(context).pop,
-        ),
-        body: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: Column(children: [
-              const SizedBox(height: 40),
-              AppTextFieldComponent(
-                title: AppLocalizations.of(context).projectSettingsProjectNameLabel,
-                hint: AppLocalizations.of(context).projectSettingsEnterProjectNameHint,
-                controller: _controller,
-                maxLength: 30,
-                textInputAction: TextInputAction.done,
-                onChanged: _store.updateNewProjectName,
-              ),
-              const SizedBox(height: 32),
-              Observer(
-                builder: (context) => AppFilledButtonComponent(
-                  title: AppLocalizations.of(context).projectSettingsUpdateButton,
-                  onPressed: _store.isUpdateProjectNameButtonEnabled ? _store.updateProjectName : null,
-                ),
-              ),
-              const SizedBox(height: 16),
-            ]),
-          ),
+  Widget build(BuildContext context) => Observer(
+        builder: (context) => OneTextFieldComponent(
+          appBarTitle: AppLocalizations.of(context).projectSettingsRenameTitle,
+          controller: _controller,
+          textFieldLabel: AppLocalizations.of(context).projectSettingsProjectNameLabel,
+          textFieldHint: AppLocalizations.of(context).projectSettingsEnterProjectNameHint,
+          textFieldMaxLength: 30,
+          onTextFieldChanged: _store.updateNewProjectName,
+          buttonTitle: AppLocalizations.of(context).projectSettingsUpdateButton,
+          isButtonEnabled: _store.isUpdateProjectNameButtonEnabled,
+          onButtonPressed: _store.updateProjectName,
         ),
       );
 
   @override
   void dispose() {
     _store.resetNewProjectName();
-    _controller.dispose();
     super.dispose();
   }
 }
