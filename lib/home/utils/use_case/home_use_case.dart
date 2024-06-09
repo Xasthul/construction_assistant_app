@@ -1,5 +1,6 @@
 import 'package:construction_assistant_app/app/app_dependencies.dart';
 import 'package:construction_assistant_app/app/utils/core/core_error_handler.dart';
+import 'package:construction_assistant_app/app/utils/use_case/secure_storage.dart';
 import 'package:construction_assistant_app/home/utils/entity/project.dart';
 import 'package:construction_assistant_app/home/utils/mapper/home_mapper.dart';
 import 'package:construction_assistant_app/home/utils/service/home_service.dart';
@@ -7,6 +8,7 @@ import 'package:construction_assistant_app/home/utils/service/home_service.dart'
 class HomeUseCase {
   final HomeService _homeService = getIt<HomeService>();
   final HomeMapper _homeMapper = getIt<HomeMapper>();
+  final SecureStorage _secureStorage = getIt<SecureStorage>();
   final CoreErrorHandler _coreErrorHandler = getIt<CoreErrorHandler>();
 
   Future<List<Project>> loadProjects() async {
@@ -25,6 +27,14 @@ class HomeUseCase {
   Future<void> createProject({required String projectName}) async {
     try {
       await _homeService.createProject(projectName: projectName);
+    } catch (error) {
+      _coreErrorHandler.throwErrorFrom(error);
+    }
+  }
+
+  Future<void> logout() async {
+    try {
+      await _secureStorage.removeTokens();
     } catch (error) {
       _coreErrorHandler.throwErrorFrom(error);
     }
