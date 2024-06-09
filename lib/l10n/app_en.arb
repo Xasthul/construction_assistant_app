@@ -64,5 +64,19 @@
   "createProjectEnterProjectNameHint": "Enter project name",
   "createProjectCreateButton": "Create",
   "@-------------------------Profile-------------------------": {},
-  "profileLogoutButton": "Logout"
+  "profileLogoutButton": "Logout",
+  "@-------------------------ProjectDetails-------------------------": {},
+  "projectDetailsTitle": "Project details",
+  "projectDetailsStepsCount": "Steps: {stepsCount}",
+  "@projectDetailsStepsCount": {
+    "stepsCount": {
+      "projectsCount": {
+        "type": "int"
+      }
+    }
+  },
+  "projectDetailsNoStepsLabel": "No steps",
+  "projectDetailsCreateFirstStepLabel": "Create the first step for this project",
+  "projectDetailsAddStepButton": "Add step",
+  "projectDetailsAddNewStepButton": "Add new step"
 }

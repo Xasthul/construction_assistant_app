@@ -6,6 +6,7 @@ import 'package:construction_assistant_app/home/store/home_store.dart';
 import 'package:construction_assistant_app/home/utils/navigator/home_navigator.dart';
 import 'package:construction_assistant_app/l10n/generated/app_localizations.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 
 class HomeContentHeaderComponent extends StatefulWidget {
   const HomeContentHeaderComponent({super.key});
@@ -19,11 +20,13 @@ class _HomeContentHeaderComponentState extends State<HomeContentHeaderComponent>
 
   @override
   Widget build(BuildContext context) => Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-        Text(
-          AppLocalizations.of(context).homeProjectsCount(_store.projectsCount),
-          style: AppTextTheme.of(context).body2Bold.copyWith(
-                color: CommonColorTheme.of(context).titleTextColor,
-              ),
+        Observer(
+          builder: (context) => Text(
+            AppLocalizations.of(context).homeProjectsCount(_store.projectsCount),
+            style: AppTextTheme.of(context).body2Bold.copyWith(
+                  color: CommonColorTheme.of(context).titleTextColor,
+                ),
+          ),
         ),
         const SizedBox(width: 8),
         AppTextButtonComponent(

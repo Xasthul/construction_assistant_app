@@ -22,7 +22,7 @@ class _HomeContentListComponentState extends State<HomeContentListComponent> {
             itemCount: _store.projectsCount,
             itemBuilder: (context, index) => HomeContentListItemComponent(
               projectName: _store.projects[index].title,
-              onPressed: () => HomeNavigator.of(context).navigateToProjectDetails(projectId: _store.projects[index].id),
+              onPressed: () => HomeNavigator.of(context).navigateToProjectDetails(project: _store.projects[index]),
             ),
             separatorBuilder: (context, index) => const SizedBox(height: 12),
           ),
