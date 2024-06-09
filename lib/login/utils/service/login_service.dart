@@ -2,7 +2,7 @@ import 'package:construction_assistant_app/app/app_dependencies.dart';
 import 'package:construction_assistant_app/app/utils/entity/app_constants.dart';
 import 'package:construction_assistant_app/app/utils/network/dio_general_client.dart';
 import 'package:construction_assistant_app/app/utils/network/response/app_data_response.dart';
-import 'package:construction_assistant_app/app/utils/network/response/login_response.dart';
+import 'package:construction_assistant_app/login/utils/network/login_response.dart';
 
 class LoginService {
   final DioGeneralClient _client = getIt<DioGeneralClient>();
