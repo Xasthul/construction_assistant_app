@@ -4,21 +4,9 @@ import 'package:construction_assistant_app/login/create_account/utils/entity/cre
 import 'package:construction_assistant_app/login/create_account/utils/entity/create_account_email_error.dart';
 import 'package:construction_assistant_app/login/create_account/utils/entity/create_account_name_error.dart';
 import 'package:construction_assistant_app/login/create_account/utils/entity/create_account_password_error.dart';
-import 'package:dio/dio.dart';
 
 class CreateAccountErrorFormatter {
   final AppLocalizations _appLocalizations = getIt<AppLocalizations>();
-
-  String formatError(dynamic error) {
-    if (error is! DioException) {
-      return _appLocalizations.coreErrorSomethingWentWrong;
-    }
-    return switch (error.response?.statusCode) {
-      401 => _appLocalizations.coreErrorCredentialsIncorrect,
-      409 => _appLocalizations.coreErrorEmailAlreadyRegistered,
-      _ => _appLocalizations.coreErrorSomethingWentWrong
-    };
-  }
 
   String? getNameErrorStringFrom(CreateAccountNameError nameError) => switch (nameError) {
         CreateAccountNameError.invalid => _appLocalizations.createAccountEnterAValidNameError,

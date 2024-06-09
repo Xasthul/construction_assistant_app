@@ -5,7 +5,7 @@ import 'package:construction_assistant_app/l10n/generated/app_localizations.dart
 class CoreErrorFormatter {
   final AppLocalizations _appLocalizations = getIt<AppLocalizations>();
 
-  String getStringFrom({required dynamic error}) {
+  String formatError(dynamic error) {
     if (error is CoreError) {
       return switch (error) {
         CoreProjectNotFoundError() => _appLocalizations.coreSomethingWentWrongError,

@@ -1,7 +1,7 @@
 import 'package:construction_assistant_app/app/app_dependencies.dart';
+import 'package:construction_assistant_app/app/utils/core/core_error_formatter.dart';
 import 'package:construction_assistant_app/app/utils/notifier/app_navigation_state_notifier.dart';
 import 'package:construction_assistant_app/login/utils/entity/login_input_state.dart';
-import 'package:construction_assistant_app/login/utils/formatter/login_error_formatter.dart';
 import 'package:construction_assistant_app/login/utils/use_case/login_use_case.dart';
 import 'package:construction_assistant_app/login/utils/validation/login_validation.dart';
 import 'package:construction_assistant_app/login/utils/validation/login_validator.dart';
@@ -14,7 +14,7 @@ class LoginStore = _LoginStore with _$LoginStore;
 abstract class _LoginStore with Store {
   final LoginUseCase _loginUseCase = getIt<LoginUseCase>();
   final LoginValidator _loginValidator = getIt<LoginValidator>();
-  final LoginErrorFormatter _loginErrorFormatter = getIt<LoginErrorFormatter>();
+  final CoreErrorFormatter _coreErrorFormatter = getIt<CoreErrorFormatter>();
   final AppNavigationStateNotifier _appNavigationStateNotifier = getIt<AppNavigationStateNotifier>();
 
   @readonly
@@ -65,7 +65,7 @@ abstract class _LoginStore with Store {
       );
       await _appNavigationStateNotifier.updateNavigationState();
     } catch (error) {
-      _errorMessage = _loginErrorFormatter.formatError(error);
+      _errorMessage = _coreErrorFormatter.formatError(error);
     } finally {
       _isLoading = false;
     }
