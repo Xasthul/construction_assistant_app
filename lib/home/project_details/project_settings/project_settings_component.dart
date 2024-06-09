@@ -45,7 +45,7 @@ class _ProjectDetailsSettingsComponentState extends State<ProjectDetailsSettings
               const ProjectDetailsNameComponent(),
               const SizedBox(height: 20),
               AppActionButtonComponent(
-                title: AppLocalizations.of(context).projectSettingsRenameButton,
+                title: AppLocalizations.of(context).projectSettingsRenameProjectButton,
                 onPressed: HomeNavigator.of(context).navigateToProjectSettingsRename,
               ),
               const SizedBox(height: 12),

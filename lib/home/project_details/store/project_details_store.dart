@@ -22,6 +22,12 @@ abstract class _ProjectDetailsStore with Store {
   Project _project;
   @readonly
   List<Step> _steps = [];
+
+  @readonly
+  String _newProjectName = '';
+  @readonly
+  bool _isProjectRenamedSuccessfully = false;
+
   @readonly
   bool _isProjectDeletedSuccessfully = false;
   @readonly
@@ -31,6 +37,9 @@ abstract class _ProjectDetailsStore with Store {
 
   @computed
   int get stepsCount => _steps.length;
+
+  @computed
+  bool get isUpdateProjectNameButtonEnabled => _newProjectName.isNotEmpty;
 
   @action
   Future<void> load() async {
@@ -46,7 +55,7 @@ abstract class _ProjectDetailsStore with Store {
   }
 
   @action
-  Future<void> loadProjectDetails() async {
+  Future<void> _loadProjectDetails() async {
     try {
       _project = await _projectDetailsUseCase.getProjectDetails(projectId: _project.id);
     } catch (error) {
@@ -55,13 +64,19 @@ abstract class _ProjectDetailsStore with Store {
   }
 
   @action
-  Future<void> updateProjectDetails({required String newProjectName}) async {
+  Future<void> updateProjectName() async {
     try {
+      if (_project.title == _newProjectName) {
+        _isProjectRenamedSuccessfully = true;
+        return;
+      }
       await _projectDetailsUseCase.updateProjectDetails(
         projectId: _project.id,
-        newTitle: newProjectName,
+        newTitle: _newProjectName,
       );
-      // TODO(naz): reload details?
+      await _loadProjectDetails();
+      await _homeNotifier.loadProjects();
+      _isProjectRenamedSuccessfully = true;
     } catch (error) {
       _errorMessage = _coreErrorFormatter.formatError(error);
     }
@@ -103,6 +118,15 @@ abstract class _ProjectDetailsStore with Store {
       _errorMessage = _coreErrorFormatter.formatError(error);
     }
   }
+
+  @action
+  void updateNewProjectName(String newName) => _newProjectName = newName;
+
+  @action
+  void resetNewProjectName() => _newProjectName = '';
+
+  @action
+  void resetIsProjectRenamedSuccessfully() => _isProjectRenamedSuccessfully = false;
 
   @action
   void resetIsProjectDeletedSuccessfully() => _isProjectDeletedSuccessfully = false;

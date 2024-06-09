@@ -82,7 +82,12 @@
   "projectDetailsAddNewStepButton": "Add new step",
   "@-------------------------ProjectSettings-------------------------": {},
   "projectSettingsTitle": "Project settings",
-  "projectSettingsRenameButton": "Rename project",
+  "projectSettingsRenameProjectButton": "Rename project",
   "projectSettingsUsersButton": "Users",
-  "projectSettingsDeleteButton": "Delete project"
+  "projectSettingsDeleteButton": "Delete project",
+  "projectSettingsRenameTitle": "Rename project",
+  "projectSettingsProjectNameLabel": "Project name",
+  "projectSettingsEnterProjectNameHint": "Project name",
+  "projectSettingsUpdateButton": "Update",
+  "projectSettingsUsersTitle": "Project users"
 }
