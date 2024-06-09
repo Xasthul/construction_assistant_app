@@ -3,6 +3,7 @@ import 'package:construction_assistant_app/app/utils/entity/app_constants.dart';
 import 'package:construction_assistant_app/app/utils/network/dio_client_wrapper.dart';
 import 'package:construction_assistant_app/app/utils/network/response/access_token_response.dart';
 import 'package:construction_assistant_app/app/utils/network/response/app_data_response.dart';
+import 'package:construction_assistant_app/app/utils/network/response/core_error_response.dart';
 import 'package:construction_assistant_app/app/utils/use_case/secure_storage.dart';
 import 'package:dio/dio.dart';
 
@@ -19,12 +20,13 @@ class DioAuthorizedClient extends DioClientWrapper {
           return handler.next(options);
         },
         onError: (DioException e, handler) async {
-          if (e.response?.statusCode != 401) {
-            return handler.next(e);
+          if ((e.response?.statusCode == 401 && e.response?.data == null) ||
+              CoreErrorResponse.fromJson(e.response?.data as Map<String, dynamic>).errorCode == 14) {
+            final newAccessToken = await _refreshAccessToken();
+            e.requestOptions.headers['Authorization'] = 'Bearer $newAccessToken';
+            return handler.resolve(await _dio.fetch(e.requestOptions));
           }
-          final newAccessToken = await _refreshAccessToken();
-          e.requestOptions.headers['Authorization'] = 'Bearer $newAccessToken';
-          return handler.resolve(await _dio.fetch(e.requestOptions));
+          return handler.next(e);
         },
       ));
 
