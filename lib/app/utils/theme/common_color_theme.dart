@@ -1,3 +1,4 @@
+import 'package:construction_assistant_app/app/utils/theme/app_action_button_color_theme.dart';
 import 'package:construction_assistant_app/app/utils/theme/app_filled_button_color_theme.dart';
 import 'package:construction_assistant_app/app/utils/theme/app_snackbar_color_theme.dart';
 import 'package:construction_assistant_app/app/utils/theme/app_text_button_color_theme.dart';
@@ -12,6 +13,7 @@ class CommonColorTheme {
     required this.appFilledButtonColorTheme,
     required this.appTextButtonColorTheme,
     required this.appSnackBarColorTheme,
+    required this.appActionButtonColorTheme,
     required this.titleTextColor,
     required this.labelTextColor,
     required this.circularProgressIndicatorColor,
@@ -23,6 +25,7 @@ class CommonColorTheme {
         appFilledButtonColorTheme: AppFilledButtonColorTheme.light(),
         appTextButtonColorTheme: AppTextButtonColorTheme.light(),
         appSnackBarColorTheme: AppSnackBarColorTheme.light(),
+        appActionButtonColorTheme: AppActionButtonColorTheme.light(),
         titleTextColor: ColorConstants.grayscale900,
         labelTextColor: ColorConstants.grayscale600,
         circularProgressIndicatorColor: ColorConstants.primary500,
@@ -33,6 +36,7 @@ class CommonColorTheme {
   final AppFilledButtonColorTheme appFilledButtonColorTheme;
   final AppTextButtonColorTheme appTextButtonColorTheme;
   final AppSnackBarColorTheme appSnackBarColorTheme;
+  final AppActionButtonColorTheme appActionButtonColorTheme;
   final Color titleTextColor;
   final Color labelTextColor;
   final Color circularProgressIndicatorColor;
