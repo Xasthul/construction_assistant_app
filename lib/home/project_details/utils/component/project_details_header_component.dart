@@ -19,28 +19,22 @@ class _ProjectDetailsHeaderComponentState extends State<ProjectDetailsHeaderComp
   final ProjectDetailsStore _store = getIt<ProjectDetailsStore>();
 
   @override
-  Widget build(BuildContext context) => Observer(
-        builder: (context) => Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Text(
-            _store.project.title,
-            style: AppTextTheme.of(context).headline1Bold.copyWith(
-                  color: CommonColorTheme.of(context).titleTextColor,
-                ),
-          ),
-          const SizedBox(height: 20),
-          Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-            Text(
+  Widget build(BuildContext context) => Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        const SizedBox(height: 20),
+        Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+          Observer(
+            builder: (context) => Text(
               AppLocalizations.of(context).projectDetailsStepsCount(_store.stepsCount),
               style: AppTextTheme.of(context).body2Bold.copyWith(
                     color: CommonColorTheme.of(context).titleTextColor,
                   ),
             ),
-            const SizedBox(width: 8),
-            AppTextButtonComponent(
-              title: AppLocalizations.of(context).projectDetailsAddNewStepButton,
-              onPressed: HomeNavigator.of(context).navigateToCreateStep,
-            ),
-          ]),
+          ),
+          const SizedBox(width: 8),
+          AppTextButtonComponent(
+            title: AppLocalizations.of(context).projectDetailsAddNewStepButton,
+            onPressed: HomeNavigator.of(context).navigateToCreateStep,
+          ),
         ]),
-      );
+      ]);
 }

@@ -75,6 +75,7 @@
       }
     }
   },
+  "projectDetailsNameLabel": "Name: ",
   "projectDetailsNoStepsLabel": "No steps",
   "projectDetailsCreateFirstStepLabel": "Create the first step for this project",
   "projectDetailsAddStepButton": "Add step",
