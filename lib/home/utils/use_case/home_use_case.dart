@@ -21,4 +21,17 @@ class HomeUseCase {
       _coreErrorHandler.throwErrorFrom(error);
     }
   }
+
+  Future<List<Project>> createProject() async {
+    try {
+      final projectsResponse = await _homeService.getProjects();
+      return projectsResponse
+          .map(
+            (projectResponse) => _homeMapper.mapProjectResponseToDomain(projectResponse),
+      )
+          .toList();
+    } catch (error) {
+      _coreErrorHandler.throwErrorFrom(error);
+    }
+  }
 }

@@ -1,5 +1,8 @@
 import 'package:construction_assistant_app/app/app_dependencies.dart';
 import 'package:construction_assistant_app/app/utils/component/app_circular_progress_indicator_component.dart';
+import 'package:construction_assistant_app/app/utils/extension/app_snackbar_extension.dart';
+import 'package:construction_assistant_app/app/utils/helpers/after_layout.dart';
+import 'package:construction_assistant_app/app/utils/helpers/reaction_dispose.dart';
 import 'package:construction_assistant_app/home/home_dependencies.dart';
 import 'package:construction_assistant_app/home/store/home_store.dart';
 import 'package:construction_assistant_app/home/utils/component/home_empty_content_component.dart';
@@ -7,6 +10,7 @@ import 'package:construction_assistant_app/home/utils/component/home_header_comp
 import 'package:construction_assistant_app/home/utils/navigator/home_navigator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:mobx/mobx.dart';
 
 class HomeComponent extends StatelessWidget {
   const HomeComponent({super.key});
@@ -26,8 +30,22 @@ class _HomeComponentBase extends StatefulWidget {
   State<_HomeComponentBase> createState() => _HomeComponentBaseState();
 }
 
-class _HomeComponentBaseState extends State<_HomeComponentBase> {
+class _HomeComponentBaseState extends State<_HomeComponentBase> with ReactionDispose, AfterLayout {
   final HomeStore _store = getIt<HomeStore>();
+
+  @override
+  void afterLayout(BuildContext context) => disposers.add(
+        reaction((_) => _store.errorMessage, (String? errorMessage) {
+          if (errorMessage != null) {
+            ScaffoldMessenger.of(context).showAppErrorSnackBar(
+              context: context,
+              title: errorMessage,
+              shouldHideKeyboard: true,
+            );
+            _store.resetErrorMessage();
+          }
+        }),
+      );
 
   @override
   Widget build(BuildContext context) => Scaffold(

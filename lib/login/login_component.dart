@@ -46,7 +46,7 @@ class _LoginComponentBaseState extends State<_LoginComponentBase> with ReactionD
               title: errorMessage,
               shouldHideKeyboard: true,
             );
-            _store.handleErrorMessage();
+            _store.resetErrorMessage();
           }
         }),
       );

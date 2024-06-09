@@ -72,5 +72,5 @@ abstract class _LoginStore with Store {
   }
 
   @action
-  void handleErrorMessage() => _errorMessage = null;
+  void resetErrorMessage() => _errorMessage = null;
 }
