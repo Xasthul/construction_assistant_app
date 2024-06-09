@@ -34,5 +34,17 @@ abstract class _HomeStore with Store {
   }
 
   @action
+  Future<void> createProject({required String projectName}) async {
+    _isLoading = true;
+    try {
+      // TODO(naz): implement
+    } catch (error) {
+      _errorMessage = _coreErrorFormatter.formatError(error);
+    } finally {
+      _isLoading = false;
+    }
+  }
+
+  @action
   void resetErrorMessage() => _errorMessage = null;
 }
