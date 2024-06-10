@@ -1,5 +1,6 @@
 import 'package:construction_assistant_app/app/app_dependencies.dart';
 import 'package:construction_assistant_app/app/utils/core/core_error_formatter.dart';
+import 'package:construction_assistant_app/home/profile/utils/entity/change_password_state.dart';
 import 'package:construction_assistant_app/home/profile/utils/use_case/profile_use_case.dart';
 import 'package:construction_assistant_app/home/store/home_store.dart';
 import 'package:construction_assistant_app/home/utils/entity/user.dart';
@@ -22,7 +23,11 @@ abstract class _ProfileStore with Store {
   @readonly
   String _newUserName = '';
   @readonly
+  ChangePasswordState _changePasswordState = ChangePasswordState.empty();
+  @readonly
   bool _isEditNameSuccessful = false;
+  @readonly
+  bool _isChangePasswordSuccessful = false;
   @readonly
   bool _isLoading = false;
   @readonly
@@ -30,6 +35,18 @@ abstract class _ProfileStore with Store {
 
   @computed
   bool get isUpdateNameButtonEnabled => _newUserName.isNotEmpty;
+
+  @computed
+  bool get isOldPasswordEmpty => _changePasswordState.oldPasswordText.isEmpty;
+
+  @computed
+  bool get isNewPasswordEmpty => _changePasswordState.newPasswordText.isEmpty;
+
+  @computed
+  bool get isConfirmPasswordEmpty => _changePasswordState.confirmPasswordText.isEmpty;
+
+  @computed
+  bool get isSaveChangePasswordButtonEnabled => !isOldPasswordEmpty && !isNewPasswordEmpty && !isConfirmPasswordEmpty;
 
   @action
   Future<void> load() async {}
@@ -63,6 +80,59 @@ abstract class _ProfileStore with Store {
   }
 
   @action
+  void updateChangePasswordState({
+    String? oldPasswordText,
+    String? newPasswordText,
+    String? confirmPasswordText,
+  }) =>
+      _changePasswordState = _changePasswordState.copyWith(
+        oldPasswordText: oldPasswordText,
+        newPasswordText: newPasswordText,
+        confirmPasswordText: confirmPasswordText,
+      );
+
+  @action
+  void toggleObscureOldPasswordField({required String text}) {
+    if (text.isNotEmpty) {
+      _changePasswordState = _changePasswordState.copyWith(
+        obscureOldPasswordField: !_changePasswordState.obscureOldPasswordField,
+      );
+    }
+  }
+
+  @action
+  void toggleObscureNewPasswordField({required String text}) {
+    if (text.isNotEmpty) {
+      _changePasswordState = _changePasswordState.copyWith(
+        obscureNewPasswordField: !_changePasswordState.obscureNewPasswordField,
+      );
+    }
+  }
+
+  @action
+  void toggleObscureConfirmPasswordField({required String text}) {
+    if (text.isNotEmpty) {
+      _changePasswordState = _changePasswordState.copyWith(
+        obscureConfirmPasswordField: !_changePasswordState.obscureConfirmPasswordField,
+      );
+    }
+  }
+
+  @action
+  Future<void> updatePassword() async {
+    try {
+      // TODO(naz): handle new password is the same as old
+      await _profileUseCase.updateUserPassword(
+        oldPassword: _changePasswordState.oldPasswordText,
+        newPassword: _changePasswordState.newPasswordText,
+      );
+      _isChangePasswordSuccessful = true;
+    } catch (error) {
+      _errorMessage = _coreErrorFormatter.formatError(error);
+    }
+  }
+
+  @action
   Future<void> logout() async {
     try {
       await _profileUseCase.logout();
@@ -84,6 +154,12 @@ abstract class _ProfileStore with Store {
 
   @action
   void resetIsEditNameSuccessful() => _isEditNameSuccessful = false;
+
+  @action
+  void resetIsChangePasswordSuccessful() => _isChangePasswordSuccessful = false;
+
+  @action
+  void resetChangePasswordState() => _changePasswordState = ChangePasswordState.empty();
 
   @action
   void resetErrorMessage() => _errorMessage = null;

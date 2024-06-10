@@ -1,6 +1,7 @@
 import 'package:construction_assistant_app/app/utils/component/app_bar_component.dart';
 import 'package:construction_assistant_app/app/utils/component/app_filled_button_component.dart';
 import 'package:construction_assistant_app/app/utils/component/app_text_field/app_text_field_component.dart';
+import 'package:construction_assistant_app/app/utils/component/hide_keyboard_component.dart';
 import 'package:construction_assistant_app/home/utils/navigator/home_navigator.dart';
 import 'package:flutter/material.dart';
 
@@ -37,32 +38,34 @@ class OneTextFieldComponent extends StatelessWidget {
   final VoidCallback _onButtonPressed;
 
   @override
-  Widget build(BuildContext context) => Scaffold(
-        appBar: AppBarComponent(
-          title: _appBarTitle,
-          onBackButtonPressed: HomeNavigator.of(context).pop,
-        ),
-        body: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: Column(children: [
-              const SizedBox(height: 40),
-              AppTextFieldComponent(
-                title: _textFieldLabel,
-                hint: _textFieldHint,
-                controller: _controller,
-                maxLength: _textFieldMaxLength,
-                textInputAction: TextInputAction.done,
-                onChanged: _onTextFieldChanged,
-              ),
-              const SizedBox(height: 32),
-              AppFilledButtonComponent(
-                title: _buttonTitle,
-                onPressed: _isButtonEnabled ? _onButtonPressed : null,
-              ),
-              const SizedBox(height: 16),
-            ]),
+  Widget build(BuildContext context) => HideKeyboardComponent(
+    child: Scaffold(
+          appBar: AppBarComponent(
+            title: _appBarTitle,
+            onBackButtonPressed: HomeNavigator.of(context).pop,
+          ),
+          body: SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Column(children: [
+                const SizedBox(height: 40),
+                AppTextFieldComponent(
+                  title: _textFieldLabel,
+                  hint: _textFieldHint,
+                  controller: _controller,
+                  maxLength: _textFieldMaxLength,
+                  textInputAction: TextInputAction.done,
+                  onChanged: _onTextFieldChanged,
+                ),
+                const SizedBox(height: 32),
+                AppFilledButtonComponent(
+                  title: _buttonTitle,
+                  onPressed: _isButtonEnabled ? _onButtonPressed : null,
+                ),
+                const SizedBox(height: 16),
+              ]),
+            ),
           ),
         ),
-      );
+  );
 }
