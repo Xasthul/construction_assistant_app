@@ -1,5 +1,7 @@
 import 'package:construction_assistant_app/home/create_project/create_project_component.dart';
 import 'package:construction_assistant_app/home/profile/profile_component.dart';
+import 'package:construction_assistant_app/home/profile/utils/component/profile_change_password_component.dart';
+import 'package:construction_assistant_app/home/profile/utils/component/profile_edit_name_component.dart';
 import 'package:construction_assistant_app/home/project_details/create_step/create_step_component.dart';
 import 'package:construction_assistant_app/home/project_details/project_details_component.dart';
 import 'package:construction_assistant_app/home/project_details/project_settings/project_settings_add_user_component.dart';
@@ -47,6 +49,18 @@ class HomeNavigator extends InheritedWidget {
   void navigateToProfile({required User user}) => _navigationKey.currentState?.push(
         MaterialPageRoute(
           builder: (context) => ProfileComponent(user: user),
+        ),
+      );
+
+  void navigateToProfileEditName() => _navigationKey.currentState?.push(
+        MaterialPageRoute(
+          builder: (context) => const ProfileEditNameComponent(),
+        ),
+      );
+
+  void navigateToProfileChangePassword() => _navigationKey.currentState?.push(
+        MaterialPageRoute(
+          builder: (context) => const ProfileChangePasswordComponent(),
         ),
       );
 

@@ -40,12 +40,13 @@ abstract class _HomeStore with Store, HomeNotifier {
 
   @action
   Future<void> load() async {
-    await _loadUserDetails();
+    await loadUserDetails();
     await loadProjects();
   }
 
+  @override
   @action
-  Future<void> _loadUserDetails() async {
+  Future<void> loadUserDetails() async {
     _isLoading = true;
     try {
       _user = await _homeUseCase.getUserDetails();

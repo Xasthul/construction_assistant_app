@@ -20,17 +20,70 @@ abstract class _ProfileStore with Store {
   @readonly
   User _user;
   @readonly
+  String _newUserName = '';
+  @readonly
+  bool _isEditNameSuccessful = false;
+  @readonly
   bool _isLoading = false;
   @readonly
   String? _errorMessage;
 
+  @computed
+  bool get isUpdateNameButtonEnabled => _newUserName.isNotEmpty;
+
   @action
   Future<void> load() async {}
 
-  Future<void> _loadUserDetails() async {}
+  @action
+  Future<void> _loadUserDetails() async {
+    try {
+      _user = await _profileUseCase.getUserDetails();
+    } catch (error) {
+      _errorMessage = _coreErrorFormatter.formatError(error);
+    }
+  }
 
   @action
-  Future<void> logout() async => _homeNotifier.logout();
+  void updateNewUserName(String newName) => _newUserName = newName;
+
+  @action
+  Future<void> updateUserName() async {
+    if (_newUserName == _user.name) {
+      _isEditNameSuccessful = true;
+      return;
+    }
+    try {
+      await _profileUseCase.updateUserName(newName: _newUserName);
+      await _loadUserDetails();
+      await _homeNotifier.loadUserDetails();
+      _isEditNameSuccessful = true;
+    } catch (error) {
+      _errorMessage = _coreErrorFormatter.formatError(error);
+    }
+  }
+
+  @action
+  Future<void> logout() async {
+    try {
+      await _profileUseCase.logout();
+      await _homeNotifier.logout();
+    } catch (error) {
+      _errorMessage = _coreErrorFormatter.formatError(error);
+    }
+  }
+
+  @action
+  Future<void> deleteAccount() async {
+    try {
+      await _profileUseCase.deleteAccount();
+      await _homeNotifier.logout();
+    } catch (error) {
+      _errorMessage = _coreErrorFormatter.formatError(error);
+    }
+  }
+
+  @action
+  void resetIsEditNameSuccessful() => _isEditNameSuccessful = false;
 
   @action
   void resetErrorMessage() => _errorMessage = null;

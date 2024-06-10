@@ -3,16 +3,9 @@ import 'package:construction_assistant_app/app/utils/entity/app_constants.dart';
 import 'package:construction_assistant_app/app/utils/network/dio_authorized_client.dart';
 import 'package:construction_assistant_app/app/utils/network/response/app_data_response.dart';
 import 'package:construction_assistant_app/home/utils/network/project_response.dart';
-import 'package:construction_assistant_app/home/utils/network/user_response.dart';
 
 class HomeService {
   final DioAuthorizedClient _client = getIt<DioAuthorizedClient>();
-
-  Future<UserResponse> getUserDetails() async {
-    final response = await _client.get('${AppConstants.serviceUrl}/users');
-    final appDataResponse = AppDataResponse.fromJson(response);
-    return UserResponse.fromJson(appDataResponse.data as Map<String, dynamic>);
-  }
 
   Future<List<ProjectResponse>> getProjects() async {
     final response = await _client.get('${AppConstants.serviceUrl}/projects');
