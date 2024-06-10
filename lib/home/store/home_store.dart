@@ -4,6 +4,7 @@ import 'package:construction_assistant_app/app/utils/core/core_error.dart';
 import 'package:construction_assistant_app/app/utils/core/core_error_formatter.dart';
 import 'package:construction_assistant_app/app/utils/notifier/app_navigation_state_notifier.dart';
 import 'package:construction_assistant_app/home/utils/entity/project.dart';
+import 'package:construction_assistant_app/home/utils/entity/user.dart';
 import 'package:construction_assistant_app/home/utils/notifier/home_notifier.dart';
 import 'package:construction_assistant_app/home/utils/use_case/home_use_case.dart';
 import 'package:mobx/mobx.dart';
@@ -18,6 +19,8 @@ abstract class _HomeStore with Store, HomeNotifier {
   final CoreErrorFormatter _coreErrorFormatter = getIt<CoreErrorFormatter>();
 
   @readonly
+  User? _user;
+  @readonly
   List<Project> _projects = [];
   @readonly
   bool _isLoading = false;
@@ -27,8 +30,34 @@ abstract class _HomeStore with Store, HomeNotifier {
   @computed
   int get projectsCount => _projects.length;
 
+  @computed
+  String get userName => _user?.name ?? '';
+
+  @computed
+  String get userNameFirstCharacter => userName.isNotEmpty //
+      ? userName[0]
+      : '';
+
   @action
-  Future<void> load() async => loadProjects();
+  Future<void> load() async {
+    await _loadUserDetails();
+    await loadProjects();
+  }
+
+  @action
+  Future<void> _loadUserDetails() async {
+    _isLoading = true;
+    try {
+      _user = await _homeUseCase.getUserDetails();
+    } on CoreInvalidAccessTokenError catch (error) {
+      await logout();
+      _errorMessage = _coreErrorFormatter.formatError(error);
+    } catch (error) {
+      _errorMessage = _coreErrorFormatter.formatError(error);
+    } finally {
+      _isLoading = false;
+    }
+  }
 
   @override
   @action

@@ -2,6 +2,7 @@ import 'package:construction_assistant_app/app/app_dependencies.dart';
 import 'package:construction_assistant_app/app/utils/core/core_error_handler.dart';
 import 'package:construction_assistant_app/app/utils/use_case/secure_storage.dart';
 import 'package:construction_assistant_app/home/utils/entity/project.dart';
+import 'package:construction_assistant_app/home/utils/entity/user.dart';
 import 'package:construction_assistant_app/home/utils/mapper/home_mapper.dart';
 import 'package:construction_assistant_app/home/utils/service/home_service.dart';
 
@@ -10,6 +11,15 @@ class HomeUseCase {
   final HomeMapper _homeMapper = getIt<HomeMapper>();
   final SecureStorage _secureStorage = getIt<SecureStorage>();
   final CoreErrorHandler _coreErrorHandler = getIt<CoreErrorHandler>();
+
+  Future<User> getUserDetails() async {
+    try {
+      final response = await _homeService.getUserDetails();
+      return _homeMapper.mapUserResponseToDomain(response);
+    } catch (error) {
+      _coreErrorHandler.throwErrorFrom(error);
+    }
+  }
 
   Future<List<Project>> loadProjects() async {
     try {
