@@ -36,7 +36,9 @@ class _HomeHeaderComponentState extends State<HomeHeaderComponent> {
           height: 40,
           width: 40,
           child: FilledButton(
-            onPressed: HomeNavigator.of(context).navigateToProfile,
+            onPressed: _store.user != null //
+                ? () => HomeNavigator.of(context).navigateToProfile(user: _store.user!)
+                : null,
             style: ButtonStyle(
               shape: WidgetStateProperty.all(
                 const CircleBorder(),
