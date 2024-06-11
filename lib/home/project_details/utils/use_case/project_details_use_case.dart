@@ -1,13 +1,17 @@
+import 'dart:typed_data';
+
 import 'package:construction_assistant_app/app/app_dependencies.dart';
 import 'package:construction_assistant_app/app/utils/core/core_error_handler.dart';
 import 'package:construction_assistant_app/home/project_details/utils/service/project_details_service.dart';
 import 'package:construction_assistant_app/home/utils/entity/project.dart';
 import 'package:construction_assistant_app/home/utils/entity/step.dart';
 import 'package:construction_assistant_app/home/utils/mapper/home_mapper.dart';
+import 'package:image_picker/image_picker.dart';
 
 class ProjectDetailsUseCase {
   final ProjectDetailsService _projectDetailsService = getIt<ProjectDetailsService>();
   final HomeMapper _homeMapper = getIt<HomeMapper>();
+  final ImagePicker _imagePicker = getIt<ImagePicker>();
   final CoreErrorHandler _coreErrorHandler = getIt<CoreErrorHandler>();
 
   Future<Project> getProjectDetails({required String projectId}) async {
@@ -100,5 +104,10 @@ class ProjectDetailsUseCase {
     } catch (error) {
       _coreErrorHandler.throwErrorFrom(error);
     }
+  }
+
+  Future<Uint8List?> selectImage() async {
+    final image = await _imagePicker.pickImage(source: ImageSource.gallery);
+    return await image?.readAsBytes();
   }
 }

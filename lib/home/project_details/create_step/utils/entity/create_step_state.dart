@@ -5,32 +5,27 @@ class CreateStepState extends Equatable {
     required this.nameText,
     required this.detailsText,
     required this.orderText,
-    required this.assets,
   });
 
   factory CreateStepState.empty() => const CreateStepState(
         nameText: '',
         detailsText: '',
         orderText: '',
-        assets: [],
       );
 
   final String nameText;
   final String detailsText;
   final String orderText;
-  final List<String> assets;
 
   CreateStepState copyWith({
     String? nameText,
     String? detailsText,
     String? orderText,
-    List<String>? assets,
   }) =>
       CreateStepState(
         nameText: nameText ?? this.nameText,
         detailsText: detailsText ?? this.detailsText,
         orderText: orderText ?? this.orderText,
-        assets: assets ?? this.assets,
       );
 
   @override
@@ -38,6 +33,5 @@ class CreateStepState extends Equatable {
         nameText,
         detailsText,
         orderText,
-        assets,
       ];
 }

@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:typed_data';
+
 import 'package:construction_assistant_app/app/app_dependencies.dart';
 import 'package:construction_assistant_app/app/utils/core/core_error_formatter.dart';
 import 'package:construction_assistant_app/home/project_details/create_step/utils/entity/create_step_state.dart';
@@ -21,6 +24,7 @@ abstract class _CreateStepStore with Store {
 
   @readonly
   CreateStepState _createAccountState = CreateStepState.empty();
+  ObservableList<Uint8List> assets = ObservableList.of([]);
   @readonly
   bool _isStepCreatedSuccessfully = false;
   @readonly
@@ -30,30 +34,32 @@ abstract class _CreateStepStore with Store {
   bool get isCreateButtonEnabled => _createAccountState.nameText.isNotEmpty && _createAccountState.orderText.isNotEmpty;
 
   @computed
-  int get addedAssetsCount => _createAccountState.assets.length;
+  int get addedAssetsCount => assets.length;
+
+  @computed
+  bool get canAddMoreAssets => assets.length < 3;
 
   @action
   void updateCreateStepState({
     String? nameText,
     String? detailsText,
     String? orderText,
-    List<String>? assets,
   }) =>
       _createAccountState = _createAccountState.copyWith(
         nameText: nameText,
         detailsText: detailsText,
         orderText: orderText,
-        assets: assets,
       );
 
   @action
   Future<void> createStep() async {
     try {
+      final List<String> assets = this.assets.map((asset) => base64Encode(asset)).toList();
       await _projectDetailsUseCase.createStep(
         projectId: _project.id,
         title: _createAccountState.nameText,
         details: _createAccountState.detailsText,
-        assets: _createAccountState.assets,
+        assets: assets,
         order: int.parse(_createAccountState.orderText),
       );
       await _projectDetailsNotifier.loadSteps();
@@ -61,6 +67,15 @@ abstract class _CreateStepStore with Store {
     } catch (error) {
       _errorMessage = _coreErrorFormatter.formatError(error);
     }
+  }
+
+  @action
+  Future<void> addAsset() async {
+    final asset = await _projectDetailsUseCase.selectImage();
+    if (asset == null) {
+      return;
+    }
+    assets.add(asset);
   }
 
   @action

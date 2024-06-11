@@ -117,7 +117,7 @@ class _CreateStepComponentBaseState extends State<_CreateStepComponentBase> with
                     const SizedBox(height: 24),
                     AppActionButtonComponent(
                       title: AppLocalizations.of(context).createStepAssetsButton(_store.addedAssetsCount),
-                      onPressed: () {},
+                      onPressed: HomeNavigator.of(context).navigateToCreateStepAssets,
                     ),
                     const SizedBox(height: 36),
                     AppFilledButtonComponent(

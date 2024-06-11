@@ -8,14 +8,14 @@ class HeaderComponent extends StatelessWidget {
     super.key,
     required String title,
     required String buttonTitle,
-    required VoidCallback onPressed,
+    required VoidCallback? onPressed,
   })  : _title = title,
         _buttonTitle = buttonTitle,
         _onPressed = onPressed;
 
   final String _title;
   final String _buttonTitle;
-  final VoidCallback _onPressed;
+  final VoidCallback? _onPressed;
 
   @override
   Widget build(BuildContext context) => Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [

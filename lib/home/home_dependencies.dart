@@ -7,6 +7,7 @@ import 'package:construction_assistant_app/home/utils/service/home_service.dart'
 import 'package:construction_assistant_app/home/utils/service/users_service.dart';
 import 'package:construction_assistant_app/home/utils/use_case/home_use_case.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 class HomeDependencies extends StatefulWidget {
   const HomeDependencies({
@@ -26,6 +27,7 @@ class _HomeDependenciesState extends State<HomeDependencies> with DependencyScop
 
   @override
   void registerDependencies() {
+    getIt.registerLazySingleton<ImagePicker>(() => ImagePicker());
     getIt.registerLazySingleton<UsersService>(() => UsersService());
     getIt.registerLazySingleton<HomeService>(() => HomeService());
     getIt.registerLazySingleton<UsersMapper>(() => UsersMapper());

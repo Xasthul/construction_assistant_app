@@ -32,6 +32,9 @@ class AppTextButtonComponent extends StatelessWidget {
             const Size(0, 40),
           ),
           foregroundColor: WidgetStateProperty.resolveWith<Color>((states) {
+            if (states.contains(WidgetState.disabled)) {
+              return AppTextButtonColorTheme.of(context).disabledColor;
+            }
             if (states.contains(WidgetState.pressed)) {
               return _titlePressedColor ?? AppTextButtonColorTheme.of(context).pressedForegroundColor;
             }
