@@ -184,5 +184,11 @@
   "stepSettingsRenameStepButton": "Rename step",
   "stepSettingsUpdateDetailsButton": "Update details",
   "stepSettingsUpdateAssetsButton": "Update assets",
-  "stepSettingsDeleteStepButton": "Delete step"
+  "stepSettingsDeleteStepButton": "Delete step",
+  "stepSettingsRenameStepTitle": "Rename step",
+  "stepSettingsStepNameLabel": "Step name",
+  "stepSettingsEnterStepNameHint": "Enter step name",
+  "stepSettingsUpdateButton": "Update",
+  "stepSettingsStepDetailsLabel": "Details",
+  "stepSettingsEnterStepDetailsHint": "Enter step details"
 }
