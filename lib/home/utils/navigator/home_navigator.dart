@@ -9,6 +9,7 @@ import 'package:construction_assistant_app/home/project_details/project_settings
 import 'package:construction_assistant_app/home/project_details/project_settings/project_settings_rename_component.dart';
 import 'package:construction_assistant_app/home/project_details/project_settings/project_settings_users_component.dart';
 import 'package:construction_assistant_app/home/project_details/step_details/step_details_component.dart';
+import 'package:construction_assistant_app/home/project_details/step_details/step_settings/step_settings_component.dart';
 import 'package:construction_assistant_app/home/utils/entity/project.dart';
 import 'package:construction_assistant_app/home/utils/entity/step.dart';
 import 'package:construction_assistant_app/home/utils/entity/user.dart';
@@ -86,7 +87,7 @@ class HomeNavigator extends InheritedWidget {
 
   void navigateToProjectSettings() => _navigationKey.currentState?.push(
         MaterialPageRoute(
-          builder: (context) => const ProjectDetailsSettingsComponent(),
+          builder: (context) => const ProjectSettingsComponent(),
         ),
       );
 
@@ -118,6 +119,12 @@ class HomeNavigator extends InheritedWidget {
             project: project,
             step: step,
           ),
+        ),
+      );
+
+  void navigateToStepSettings() => _navigationKey.currentState?.push(
+        MaterialPageRoute(
+          builder: (context) => const StepSettingsComponent(),
         ),
       );
 }

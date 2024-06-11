@@ -1,6 +1,8 @@
 import 'package:construction_assistant_app/app/app_dependencies.dart';
 import 'package:construction_assistant_app/app/utils/component/dependency_scope.dart';
 import 'package:construction_assistant_app/home/project_details/step_details/store/step_details_store.dart';
+import 'package:construction_assistant_app/home/project_details/step_details/utils/service/step_details_service.dart';
+import 'package:construction_assistant_app/home/project_details/step_details/utils/use_case/step_details_use_case.dart';
 import 'package:construction_assistant_app/home/utils/entity/project.dart';
 import 'package:construction_assistant_app/home/utils/entity/step.dart';
 import 'package:flutter/material.dart' hide Step;
@@ -29,6 +31,8 @@ class _StepDetailsDependenciesState extends State<StepDetailsDependencies> with 
 
   @override
   void registerDependencies() {
+    getIt.registerLazySingleton<StepDetailsService>(() => StepDetailsService());
+    getIt.registerLazySingleton<StepDetailsUseCase>(() => StepDetailsUseCase());
     getIt.registerLazySingleton<StepDetailsStore>(() => StepDetailsStore(
           project: widget._project,
           step: widget._step,

@@ -101,8 +101,7 @@ class _CreateStepComponentBaseState extends State<_CreateStepComponentBase> with
                       controller: _detailsController,
                       maxLength: 500,
                       maxLines: 5,
-                      textInputAction: TextInputAction.next,
-                      textInputType: TextInputType.multiline,
+                      textInputAction: TextInputAction.newline,
                       onChanged: (text) => _store.updateCreateStepState(detailsText: text),
                     ),
                     const SizedBox(height: 24),
@@ -117,7 +116,7 @@ class _CreateStepComponentBaseState extends State<_CreateStepComponentBase> with
                     ),
                     const SizedBox(height: 24),
                     AppActionButtonComponent(
-                      title: AppLocalizations.of(context).createStepAssetsButton,
+                      title: AppLocalizations.of(context).createStepAssetsButton(_store.addedAssetsCount),
                       onPressed: () {},
                     ),
                     const SizedBox(height: 36),

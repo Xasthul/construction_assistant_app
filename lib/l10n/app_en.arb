@@ -83,17 +83,28 @@
   "profileSaveButton": "Save",
   "@-------------------------ProjectDetails-------------------------": {},
   "projectDetailsTitle": "Project details",
+  "projectDetailsNameLabel": "Name: ",
+  "projectDetailsNoStepsLabel": "No steps",
+  "projectDetailsCreateFirstStepLabel": "Create the first step for this project",
   "projectDetailsStepsCount": "Steps: {stepsCount}",
   "@projectDetailsStepsCount": {
-    "stepsCount": {
-      "projectsCount": {
+    "placeholders": {
+      "stepsCount": {
         "type": "int"
       }
     }
   },
-  "projectDetailsNameLabel": "Name: ",
-  "projectDetailsNoStepsLabel": "No steps",
-  "projectDetailsCreateFirstStepLabel": "Create the first step for this project",
+  "projectStepOrderLabel": "#{order}. {stepName}",
+  "@projectStepOrderLabel": {
+    "placeholders": {
+      "order": {
+        "type": "int"
+      },
+      "stepName": {
+        "type": "String"
+      }
+    }
+  },
   "projectDetailsAddStepButton": "Add step",
   "projectDetailsAddNewStepButton": "Add new step",
   "@-------------------------ProjectSettings-------------------------": {},
@@ -111,8 +122,8 @@
   "projectSettingsAddUserButton": "Add user",
   "projectSettingsUsersCount": "Users: {usersCount}",
   "@projectSettingsUsersCount": {
-    "usersCount": {
-      "projectsCount": {
+    "placeholders": {
+      "usersCount": {
         "type": "int"
       }
     }
@@ -130,6 +141,42 @@
   "createStepEnterStepDetailsHint": "Enter step details",
   "createStepOrderLabel": "Order",
   "createStepEnterStepOrderHint": "Enter step order",
-  "createStepAssetsButton": "Assets",
-  "createStepCreateButton": "Create"
+  "createStepAssetsButton": "Assets ({count})",
+  "@createStepAssetsButton": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "createStepCreateButton": "Create",
+  "@-------------------------StepDetails-------------------------": {},
+  "stepDetailsTitle": "Step details",
+  "stepDetailsNameLabel": "Name: ",
+  "stepDetailsOrderLabel": "Order: #{order}",
+  "@stepDetailsOrderLabel": {
+    "placeholders": {
+      "order": {
+        "type": "int"
+      }
+    }
+  },
+  "stepDetailsDetailsLabel": "Details:",
+  "stepDetailsAssetsButton": "Assets ({count})",
+  "@stepDetailsAssetsButton": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "stepDetailsCompleteStepButton": "Complete step",
+  "stepDetailsCompletedByLabel": "Completed by {name}",
+  "@stepDetailsCompletedByLabel": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  }
 }

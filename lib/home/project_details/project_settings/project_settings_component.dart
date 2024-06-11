@@ -10,15 +10,14 @@ import 'package:construction_assistant_app/l10n/generated/app_localizations.dart
 import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 
-class ProjectDetailsSettingsComponent extends StatefulWidget {
-  const ProjectDetailsSettingsComponent({super.key});
+class ProjectSettingsComponent extends StatefulWidget {
+  const ProjectSettingsComponent({super.key});
 
   @override
-  State<ProjectDetailsSettingsComponent> createState() => _ProjectDetailsSettingsComponentState();
+  State<ProjectSettingsComponent> createState() => _ProjectSettingsComponentState();
 }
 
-class _ProjectDetailsSettingsComponentState extends State<ProjectDetailsSettingsComponent>
-    with ReactionDispose, AfterLayout {
+class _ProjectSettingsComponentState extends State<ProjectSettingsComponent> with ReactionDispose, AfterLayout {
   final ProjectDetailsStore _store = getIt<ProjectDetailsStore>();
 
   @override

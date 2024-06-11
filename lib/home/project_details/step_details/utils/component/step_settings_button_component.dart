@@ -2,12 +2,12 @@ import 'package:construction_assistant_app/app/utils/theme/common_color_theme.da
 import 'package:construction_assistant_app/home/utils/navigator/home_navigator.dart';
 import 'package:flutter/material.dart';
 
-class ProjectDetailsSettingsButtonComponent extends StatelessWidget {
-  const ProjectDetailsSettingsButtonComponent({super.key});
+class StepSettingsButtonComponent extends StatelessWidget {
+  const StepSettingsButtonComponent({super.key});
 
   @override
   Widget build(BuildContext context) => IconButton(
-        onPressed: HomeNavigator.of(context).navigateToProjectSettings,
+        onPressed: HomeNavigator.of(context).navigateToStepSettings,
         icon: Icon(
           Icons.settings,
           color: CommonColorTheme.of(context).appBarButtonColor,

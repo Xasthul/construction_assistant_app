@@ -28,7 +28,7 @@ class AppBarComponent extends StatelessWidget implements PreferredSizeWidget {
           onPressed: _onBackButtonPressed,
           icon: Icon(
             Icons.arrow_back_ios_rounded,
-            color: CommonColorTheme.of(context).appBarBackButtonColor,
+            color: CommonColorTheme.of(context).appBarButtonColor,
           ),
         ),
         actions: _actions,
