@@ -40,6 +40,9 @@ abstract class _StepDetailsStore with Store {
   @computed
   bool get isUpdateStepNameEnabled => _newStepName.isNotEmpty;
 
+  @computed
+  bool get isSettingsButtonVisible => _project.isOwner;
+
   @action
   Future<void> _loadStepDetails() async {
     try {

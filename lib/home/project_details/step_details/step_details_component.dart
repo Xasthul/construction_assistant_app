@@ -17,6 +17,7 @@ import 'package:construction_assistant_app/home/utils/entity/step.dart';
 import 'package:construction_assistant_app/home/utils/navigator/home_navigator.dart';
 import 'package:construction_assistant_app/l10n/generated/app_localizations.dart';
 import 'package:flutter/material.dart' hide Step;
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:mobx/mobx.dart';
 
 class StepDetailsComponent extends StatelessWidget {
@@ -62,34 +63,36 @@ class _StepDetailsComponentBaseState extends State<_StepDetailsComponentBase> wi
       );
 
   @override
-  Widget build(BuildContext context) => Scaffold(
-        appBar: AppBarComponent(
-          title: AppLocalizations.of(context).stepDetailsTitle,
-          onBackButtonPressed: HomeNavigator.of(context).pop,
-          actions: const [StepSettingsButtonComponent()],
-        ),
-        body: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: CustomScrollView(scrollBehavior: NoOverScrollBehavior(), slivers: const [
-              SliverFillRemaining(
-                hasScrollBody: false,
-                child: Column(mainAxisSize: MainAxisSize.min, children: [
-                  SizedBox(height: 20),
-                  StepDetailsNameComponent(),
-                  SizedBox(height: 16),
-                  StepDetailsOrderComponent(),
-                  SizedBox(height: 16),
-                  StepDetailsDetailsComponent(),
-                  SizedBox(height: 16),
-                  StepDetailsAssetsButtonComponent(),
-                  Spacer(),
-                  SizedBox(height: 32),
-                  StepDetailsFooterComponent(),
-                  SizedBox(height: 24),
-                ]),
-              ),
-            ]),
+  Widget build(BuildContext context) => Observer(
+        builder: (context) => Scaffold(
+          appBar: AppBarComponent(
+            title: AppLocalizations.of(context).stepDetailsTitle,
+            onBackButtonPressed: HomeNavigator.of(context).pop,
+            actions: _store.isSettingsButtonVisible ? const [StepSettingsButtonComponent()] : null,
+          ),
+          body: SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: CustomScrollView(scrollBehavior: NoOverScrollBehavior(), slivers: const [
+                SliverFillRemaining(
+                  hasScrollBody: false,
+                  child: Column(mainAxisSize: MainAxisSize.min, children: [
+                    SizedBox(height: 20),
+                    StepDetailsNameComponent(),
+                    SizedBox(height: 16),
+                    StepDetailsOrderComponent(),
+                    SizedBox(height: 16),
+                    StepDetailsDetailsComponent(),
+                    SizedBox(height: 16),
+                    StepDetailsAssetsButtonComponent(),
+                    Spacer(),
+                    SizedBox(height: 32),
+                    StepDetailsFooterComponent(),
+                    SizedBox(height: 24),
+                  ]),
+                ),
+              ]),
+            ),
           ),
         ),
       );

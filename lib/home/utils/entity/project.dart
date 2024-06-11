@@ -6,19 +6,19 @@ class Project extends Equatable {
     required this.id,
     required this.title,
     required this.users,
-    required this.createdBy,
+    required this.isOwner,
   });
 
   final String id;
   final String title;
   final List<User> users;
-  final String createdBy;
+  final bool isOwner;
 
   @override
   List<Object> get props => [
         id,
         title,
         users,
-        createdBy,
+        isOwner,
       ];
 }

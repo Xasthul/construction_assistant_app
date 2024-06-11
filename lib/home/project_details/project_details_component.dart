@@ -56,31 +56,28 @@ class _ProjectDetailsComponentBaseState extends State<_ProjectDetailsComponentBa
       );
 
   @override
-  Widget build(BuildContext context) => Scaffold(
-        appBar: AppBarComponent(
-          title: AppLocalizations.of(context).projectDetailsTitle,
-          onBackButtonPressed: HomeNavigator.of(context).pop,
-          actions: const [ProjectDetailsSettingsButtonComponent()],
-        ),
-        body: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: Observer(
-              builder: (context) {
-                if (_store.isLoading) {
-                  return const Center(
-                    child: AppCircularProgressIndicatorComponent(),
-                  );
-                }
-                return Column(children: [
-                  const SizedBox(height: 20),
-                  const ProjectDetailsNameComponent(),
-                  if (_store.steps.isNotEmpty)
-                    const ProjectDetailsContentComponent()
-                  else
-                    const ProjectDetailsEmptyContentComponent(),
-                ]);
-              },
+  Widget build(BuildContext context) => Observer(
+        builder: (context) => Scaffold(
+          appBar: AppBarComponent(
+            title: AppLocalizations.of(context).projectDetailsTitle,
+            onBackButtonPressed: HomeNavigator.of(context).pop,
+            actions: _store.isSettingsButtonVisible ? [const ProjectDetailsSettingsButtonComponent()] : null,
+          ),
+          body: SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: _store.isLoading
+                  ? const Center(
+                      child: AppCircularProgressIndicatorComponent(),
+                    )
+                  : Column(children: [
+                      const SizedBox(height: 20),
+                      const ProjectDetailsNameComponent(),
+                      if (_store.steps.isNotEmpty)
+                        const ProjectDetailsContentComponent()
+                      else
+                        const ProjectDetailsEmptyContentComponent(),
+                    ]),
             ),
           ),
         ),

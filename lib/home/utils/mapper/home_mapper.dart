@@ -12,7 +12,7 @@ class HomeMapper {
         id: projectResponse.id,
         title: projectResponse.title,
         users: projectResponse.users.map((userResponse) => _usersMapper.mapUserResponseToDomain(userResponse)).toList(),
-        createdBy: projectResponse.createdBy,
+        isOwner: projectResponse.isOwner,
       );
 
   Step mapStepResponseToDomain(StepResponse stepResponse) => Step(

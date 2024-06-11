@@ -50,6 +50,9 @@ abstract class _ProjectDetailsStore with Store, ProjectDetailsNotifier {
   @computed
   bool get isAddUserButtonEnabled => _addUserEmail.isNotEmpty;
 
+  @computed
+  bool get isSettingsButtonVisible => _project.isOwner;
+
   @action
   Future<void> load() async {
     await loadSteps();

@@ -9,7 +9,7 @@ class ProjectResponse {
     required this.id,
     required this.title,
     required this.users,
-    required this.createdBy,
+    required this.isOwner,
   });
 
   factory ProjectResponse.fromJson(Map<String, dynamic> result) => _$ProjectResponseFromJson(result);
@@ -17,5 +17,5 @@ class ProjectResponse {
   final String id;
   final String title;
   final List<UserResponse> users;
-  final String createdBy;
+  final bool isOwner;
 }
