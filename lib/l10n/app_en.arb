@@ -216,5 +216,18 @@
   "stepSettingsUpdateButton": "Update",
   "stepSettingsUpdateStepDetailsTitle": "Update step details",
   "stepSettingsStepDetailsLabel": "Details",
-  "stepSettingsEnterStepDetailsHint": "Enter step details"
+  "stepSettingsEnterStepDetailsHint": "Enter step details",
+  "stepSettingsAssetsTitle": "Assets",
+  "stepSettingsNoAssetsYetLabel": "No assets yet",
+  "stepSettingsAddTheFirstAssetForThisStepLabel": "Add the first asset for this step",
+  "stepSettingsAssetsCountLabel": "Assets: {count}/3",
+  "@stepSettingsAssetsCountLabel": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "stepSettingsAddAssetButton": "Add asset",
+  "stepSettingsAddNewAssetButton": "Add new asset"
 }

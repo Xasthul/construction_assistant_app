@@ -61,7 +61,7 @@ class _ProjectDetailsComponentBaseState extends State<_ProjectDetailsComponentBa
           appBar: AppBarComponent(
             title: AppLocalizations.of(context).projectDetailsTitle,
             onBackButtonPressed: HomeNavigator.of(context).pop,
-            actions: _store.isSettingsButtonVisible ? [const ProjectDetailsSettingsButtonComponent()] : null,
+            actions: _store.isProjectOwner ? [const ProjectDetailsSettingsButtonComponent()] : null,
           ),
           body: SafeArea(
             child: Padding(
