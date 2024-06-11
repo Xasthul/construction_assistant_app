@@ -30,6 +30,8 @@ class CoreErrorHandler {
       14 => throw CoreInvalidRefreshTokenError(),
       15 => throw CoreInvalidAccessTokenError(),
       16 => throw CoreDeleteCreatorFromProjectError(),
+      17 => throw CoreAccessToProjectDeniedError(),
+      18 => throw CoreNoStepsWithPreviousOrderFoundError(),
       _ => throw CoreUnknownError(),
     };
   }

@@ -32,4 +32,8 @@ class CoreInvalidAccessTokenError extends CoreError {}
 
 class CoreDeleteCreatorFromProjectError extends CoreError {}
 
+class CoreAccessToProjectDeniedError extends CoreError {}
+
+class CoreNoStepsWithPreviousOrderFoundError extends CoreError {}
+
 class CoreUnknownError extends CoreError {}

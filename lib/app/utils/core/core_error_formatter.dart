@@ -17,13 +17,15 @@ class CoreErrorFormatter {
         CoreDeleteUserFailedError() => _appLocalizations.coreSomethingWentWrongError,
         CoreStepNotFoundError() => _appLocalizations.coreSomethingWentWrongError,
         CoreDeleteStepFailedError() => _appLocalizations.coreSomethingWentWrongError,
-        CoreStepWithPreviousOrderNotFoundError() => _appLocalizations.coreSomethingWentWrongError,
-        CorePreviousStepNotCompletedError() => _appLocalizations.coreSomethingWentWrongError,
+        CoreStepWithPreviousOrderNotFoundError() => _appLocalizations.coreStepWithPreviousOrderNotFoundError,
+        CorePreviousStepNotCompletedError() => _appLocalizations.corePreviousStepNotCompletedError,
         CoreEmailAlreadyRegisteredError() => _appLocalizations.coreEmailAlreadyRegisteredError,
         CoreWrongCredentialsError() => _appLocalizations.coreWrongCredentialsError,
         CoreInvalidRefreshTokenError() => _appLocalizations.coreSomethingWentWrongError,
         CoreInvalidAccessTokenError() => _appLocalizations.coreInvalidAccessTokenError,
         CoreDeleteCreatorFromProjectError() => _appLocalizations.coreDeleteCreatorFromProjectError,
+        CoreAccessToProjectDeniedError() => _appLocalizations.coreSomethingWentWrongError,
+        CoreNoStepsWithPreviousOrderFoundError() => _appLocalizations.coreSomethingWentWrongError,
         _ => _appLocalizations.coreUnknownError,
       };
     }

@@ -27,7 +27,7 @@ abstract class _CreateStepStore with Store {
   String? _errorMessage;
 
   @computed
-  bool get isCreateButtonEnabled => _createAccountState.nameText.isNotEmpty;
+  bool get isCreateButtonEnabled => _createAccountState.nameText.isNotEmpty && _createAccountState.orderText.isNotEmpty;
 
   @computed
   int get addedAssetsCount => _createAccountState.assets.length;
