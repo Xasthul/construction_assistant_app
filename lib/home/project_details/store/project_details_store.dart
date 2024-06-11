@@ -61,12 +61,15 @@ abstract class _ProjectDetailsStore with Store, ProjectDetailsNotifier {
   @override
   @action
   Future<void> loadSteps() async {
+    _isLoading = true;
     try {
       _steps = []; // NOTE: for triggering UI rebuild
       final steps = await _projectDetailsUseCase.getProjectSteps(projectId: _project.id);
       _steps = steps..sort((a, b) => a.order.compareTo(b.order));
     } catch (error) {
       _errorMessage = _coreErrorFormatter.formatError(error);
+    } finally {
+      _isLoading = false;
     }
   }
 
