@@ -194,6 +194,16 @@
       }
     }
   },
+  "stepDetailsAssetsTitle": "Assets",
+  "stepDetailsNoAssetsAddedLabel": "No assets added",
+  "stepDetailsAssetsCountLabel": "Assets: {count}/3",
+  "@stepDetailsAssetsCountLabel": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "@-------------------------StepSettings-------------------------": {},
   "stepSettingsTitle": "Step settings",
   "stepSettingsRenameStepButton": "Rename step",

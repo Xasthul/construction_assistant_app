@@ -33,9 +33,11 @@ class _StepDetailsDependenciesState extends State<StepDetailsDependencies> with 
   void registerDependencies() {
     getIt.registerLazySingleton<StepDetailsService>(() => StepDetailsService());
     getIt.registerLazySingleton<StepDetailsUseCase>(() => StepDetailsUseCase());
-    getIt.registerLazySingleton<StepDetailsStore>(() => StepDetailsStore(
-          project: widget._project,
-          step: widget._step,
-        ));
+    getIt.registerLazySingleton<StepDetailsStore>(
+      () => StepDetailsStore(
+        project: widget._project,
+        step: widget._step,
+      )..load(),
+    );
   }
 }

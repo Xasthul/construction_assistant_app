@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:typed_data';
+
 import 'package:construction_assistant_app/app/app_dependencies.dart';
 import 'package:construction_assistant_app/app/utils/core/core_error_formatter.dart';
 import 'package:construction_assistant_app/home/project_details/step_details/utils/use_case/step_details_use_case.dart';
@@ -25,6 +28,7 @@ abstract class _StepDetailsStore with Store {
 
   @readonly
   Step _step;
+  ObservableList<Uint8List> assets = ObservableList.of([]);
   @readonly
   String _newStepName = '';
   @readonly
@@ -51,13 +55,15 @@ abstract class _StepDetailsStore with Store {
   bool get isSettingsButtonVisible => _project.isOwner;
 
   @action
+  Future<void> load() async => assets = ObservableList.of(_step.assets.map((asset) => base64Decode(asset)).toList());
+
+  @action
   Future<void> _loadStep() async {
     try {
       _step = await _stepDetailsUseCase.getStepDetails(
         projectId: _project.id,
         stepId: _step.id,
       );
-      print(_step.details);
     } catch (error) {
       _errorMessage = _coreErrorFormatter.formatError(error);
     }

@@ -50,17 +50,22 @@ class _StepDetailsComponentBaseState extends State<_StepDetailsComponentBase> wi
   final StepDetailsStore _store = getIt<StepDetailsStore>();
 
   @override
-  void afterLayout(BuildContext context) => disposers.add(
-        reaction((_) => _store.errorMessage, (String? errorMessage) {
-          if (errorMessage != null) {
-            ScaffoldMessenger.of(context).showAppErrorSnackBar(
-              context: context,
-              title: errorMessage,
-            );
-            _store.resetErrorMessage();
-          }
-        }),
-      );
+  void afterLayout(BuildContext context) {
+    disposers.add(
+      reaction((_) => _store.errorMessage, (String? errorMessage) {
+        if (errorMessage != null) {
+          ScaffoldMessenger.of(context).showAppErrorSnackBar(
+            context: context,
+            title: errorMessage,
+          );
+          _store.resetErrorMessage();
+        }
+      }),
+    );
+    for (final asset in _store.assets) {
+      precacheImage(MemoryImage(asset), context);
+    }
+  }
 
   @override
   Widget build(BuildContext context) => Observer(
