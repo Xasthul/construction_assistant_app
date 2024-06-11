@@ -26,6 +26,8 @@ abstract class _StepDetailsStore with Store {
   @readonly
   Step _step;
   @readonly
+  bool _isStepDeletedSuccessfully = false;
+  @readonly
   String? _errorMessage;
 
   @computed
@@ -56,6 +58,23 @@ abstract class _StepDetailsStore with Store {
       _errorMessage = _coreErrorFormatter.formatError(error);
     }
   }
+
+  @action
+  Future<void> deleteStep() async {
+    try {
+      await _stepDetailsUseCase.deleteStep(
+        projectId: _project.id,
+        stepId: _step.id,
+      );
+      await _projectDetailsNotifier.loadSteps();
+      _isStepDeletedSuccessfully = true;
+    } catch (error) {
+      _errorMessage = _coreErrorFormatter.formatError(error);
+    }
+  }
+
+  @action
+  void resetIsStepDeletedSuccessfully() => _isStepDeletedSuccessfully = false;
 
   @action
   void resetErrorMessage() => _errorMessage = null;

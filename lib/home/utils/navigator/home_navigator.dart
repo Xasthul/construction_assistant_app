@@ -10,6 +10,9 @@ import 'package:construction_assistant_app/home/project_details/project_settings
 import 'package:construction_assistant_app/home/project_details/project_settings/project_settings_users_component.dart';
 import 'package:construction_assistant_app/home/project_details/step_details/step_details_component.dart';
 import 'package:construction_assistant_app/home/project_details/step_details/step_settings/step_settings_component.dart';
+import 'package:construction_assistant_app/home/project_details/step_details/step_settings/step_settings_rename_component.dart';
+import 'package:construction_assistant_app/home/project_details/step_details/step_settings/step_settings_update_assets_component.dart';
+import 'package:construction_assistant_app/home/project_details/step_details/step_settings/step_settings_update_details_component.dart';
 import 'package:construction_assistant_app/home/utils/entity/project.dart';
 import 'package:construction_assistant_app/home/utils/entity/step.dart';
 import 'package:construction_assistant_app/home/utils/entity/user.dart';
@@ -43,11 +46,17 @@ class HomeNavigator extends InheritedWidget {
   @override
   bool updateShouldNotify(covariant InheritedWidget oldWidget) => this != oldWidget;
 
+  static const String projectDetailsRouteName = 'projectDetails';
+
   void pop() => _navigationKey.currentState?.pop();
 
   void maybePop() => _navigationKey.currentState?.maybePop();
 
   void popUntilFirst() => _navigationKey.currentState?.popUntil((route) => route.isFirst);
+
+  void popUntil(String name) => _navigationKey.currentState?.popUntil(
+        ModalRoute.withName(name),
+      );
 
   void navigateToProfile({required User user}) => _navigationKey.currentState?.push(
         MaterialPageRoute(
@@ -75,6 +84,7 @@ class HomeNavigator extends InheritedWidget {
 
   void navigateToProjectDetails({required Project project}) => _navigationKey.currentState?.push(
         MaterialPageRoute(
+          settings: const RouteSettings(name: projectDetailsRouteName),
           builder: (context) => ProjectDetailsComponent(project: project),
         ),
       );
@@ -125,6 +135,24 @@ class HomeNavigator extends InheritedWidget {
   void navigateToStepSettings() => _navigationKey.currentState?.push(
         MaterialPageRoute(
           builder: (context) => const StepSettingsComponent(),
+        ),
+      );
+
+  void navigateToStepSettingsRename() => _navigationKey.currentState?.push(
+        MaterialPageRoute(
+          builder: (context) => const StepSettingsRenameComponent(),
+        ),
+      );
+
+  void navigateToStepSettingsUpdateDetails() => _navigationKey.currentState?.push(
+        MaterialPageRoute(
+          builder: (context) => const StepSettingsUpdateDetailsComponent(),
+        ),
+      );
+
+  void navigateToStepSettingsUpdateAssets() => _navigationKey.currentState?.push(
+        MaterialPageRoute(
+          builder: (context) => const StepSettingsUpdateAssetsComponent(),
         ),
       );
 }
