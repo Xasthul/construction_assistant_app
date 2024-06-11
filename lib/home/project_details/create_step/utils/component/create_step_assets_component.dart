@@ -1,5 +1,6 @@
 import 'package:construction_assistant_app/app/app_dependencies.dart';
 import 'package:construction_assistant_app/app/utils/component/app_bar_component.dart';
+import 'package:construction_assistant_app/app/utils/component/app_circular_progress_indicator_component.dart';
 import 'package:construction_assistant_app/home/project_details/create_step/store/create_step_store.dart';
 import 'package:construction_assistant_app/home/project_details/create_step/utils/component/create_step_assets_content_component.dart';
 import 'package:construction_assistant_app/home/project_details/create_step/utils/component/create_step_assets_empty_content_component.dart';
@@ -29,6 +30,11 @@ class _CreateStepAssetsComponentState extends State<CreateStepAssetsComponent> {
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Observer(
               builder: (context) {
+                if (_store.isLoadingAsset) {
+                  return const Center(
+                    child: AppCircularProgressIndicatorComponent(),
+                  );
+                }
                 if (_store.assets.isNotEmpty) {
                   return const CreateStepAssetsContentComponent();
                 } else {

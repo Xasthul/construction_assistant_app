@@ -28,6 +28,8 @@ abstract class _CreateStepStore with Store {
   @readonly
   bool _isStepCreatedSuccessfully = false;
   @readonly
+  bool _isLoadingAsset = false;
+  @readonly
   String? _errorMessage;
 
   @computed
@@ -71,11 +73,18 @@ abstract class _CreateStepStore with Store {
 
   @action
   Future<void> addAsset() async {
-    final asset = await _projectDetailsUseCase.selectImage();
-    if (asset == null) {
-      return;
+    _isLoadingAsset = true;
+    try {
+      final asset = await _projectDetailsUseCase.selectImage();
+      if (asset == null) {
+        return;
+      }
+      assets.add(asset);
+    } catch (error) {
+      _errorMessage = _coreErrorFormatter.formatError(error);
+    } finally {
+      _isLoadingAsset = false;
     }
-    assets.add(asset);
   }
 
   @action
