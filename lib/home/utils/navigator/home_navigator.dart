@@ -8,9 +8,11 @@ import 'package:construction_assistant_app/home/project_details/project_settings
 import 'package:construction_assistant_app/home/project_details/project_settings/project_settings_component.dart';
 import 'package:construction_assistant_app/home/project_details/project_settings/project_settings_rename_component.dart';
 import 'package:construction_assistant_app/home/project_details/project_settings/project_settings_users_component.dart';
+import 'package:construction_assistant_app/home/project_details/step_details/step_details_component.dart';
 import 'package:construction_assistant_app/home/utils/entity/project.dart';
+import 'package:construction_assistant_app/home/utils/entity/step.dart';
 import 'package:construction_assistant_app/home/utils/entity/user.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide Step;
 
 class HomeNavigator extends InheritedWidget {
   factory HomeNavigator({required Widget child}) {
@@ -103,6 +105,19 @@ class HomeNavigator extends InheritedWidget {
   void navigateToProjectSettingsAddUser() => _navigationKey.currentState?.push(
         MaterialPageRoute(
           builder: (context) => const ProjectSettingsAddUserComponent(),
+        ),
+      );
+
+  void navigateToStepDetails({
+    required Project project,
+    required Step step,
+  }) =>
+      _navigationKey.currentState?.push(
+        MaterialPageRoute(
+          builder: (context) => StepDetailsComponent(
+            project: project,
+            step: step,
+          ),
         ),
       );
 }
