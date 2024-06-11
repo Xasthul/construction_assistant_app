@@ -22,8 +22,7 @@ class Step extends Equatable {
   final String? completedBy;
 
   @override
-  List<Object?> get props =>
-      [
+  List<Object?> get props => [
         id,
         projectId,
         title,

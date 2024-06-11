@@ -189,6 +189,7 @@
   "stepSettingsStepNameLabel": "Step name",
   "stepSettingsEnterStepNameHint": "Enter step name",
   "stepSettingsUpdateButton": "Update",
+  "stepSettingsUpdateStepDetailsTitle": "Update step details",
   "stepSettingsStepDetailsLabel": "Details",
   "stepSettingsEnterStepDetailsHint": "Enter step details"
 }

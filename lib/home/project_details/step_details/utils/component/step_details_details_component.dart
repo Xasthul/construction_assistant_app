@@ -4,6 +4,7 @@ import 'package:construction_assistant_app/app/utils/theme/common_color_theme.da
 import 'package:construction_assistant_app/home/project_details/step_details/store/step_details_store.dart';
 import 'package:construction_assistant_app/l10n/generated/app_localizations.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 
 class StepDetailsDetailsComponent extends StatefulWidget {
   const StepDetailsDetailsComponent({super.key});
@@ -26,11 +27,13 @@ class _StepDetailsDetailsComponentState extends State<StepDetailsDetailsComponen
                 ),
           ),
           const SizedBox(height: 8),
-          Text(
-            _store.step.details,
-            style: AppTextTheme.of(context).body1Regular.copyWith(
-                  color: CommonColorTheme.of(context).titleTextColor,
-                ),
+          Observer(
+            builder: (context) => Text(
+              _store.step.details,
+              style: AppTextTheme.of(context).body1Regular.copyWith(
+                    color: CommonColorTheme.of(context).titleTextColor,
+                  ),
+            ),
           ),
         ]),
       );

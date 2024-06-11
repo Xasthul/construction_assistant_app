@@ -17,6 +17,7 @@ class OneTextFieldComponent extends StatelessWidget {
     required String buttonTitle,
     required bool isButtonEnabled,
     required VoidCallback onButtonPressed,
+    int maxLines = 1,
   })  : _appBarTitle = appBarTitle,
         _controller = controller,
         _textFieldLabel = textFieldLabel,
@@ -25,7 +26,8 @@ class OneTextFieldComponent extends StatelessWidget {
         _onTextFieldChanged = onTextFieldChanged,
         _buttonTitle = buttonTitle,
         _isButtonEnabled = isButtonEnabled,
-        _onButtonPressed = onButtonPressed;
+        _onButtonPressed = onButtonPressed,
+        _maxLines = maxLines;
 
   final String _appBarTitle;
   final TextEditingController _controller;
@@ -36,10 +38,11 @@ class OneTextFieldComponent extends StatelessWidget {
   final String _buttonTitle;
   final bool _isButtonEnabled;
   final VoidCallback _onButtonPressed;
+  final int _maxLines;
 
   @override
   Widget build(BuildContext context) => HideKeyboardComponent(
-    child: Scaffold(
+        child: Scaffold(
           appBar: AppBarComponent(
             title: _appBarTitle,
             onBackButtonPressed: HomeNavigator.of(context).pop,
@@ -47,25 +50,28 @@ class OneTextFieldComponent extends StatelessWidget {
           body: SafeArea(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Column(children: [
-                const SizedBox(height: 40),
-                AppTextFieldComponent(
-                  title: _textFieldLabel,
-                  hint: _textFieldHint,
-                  controller: _controller,
-                  maxLength: _textFieldMaxLength,
-                  textInputAction: TextInputAction.done,
-                  onChanged: _onTextFieldChanged,
-                ),
-                const SizedBox(height: 32),
-                AppFilledButtonComponent(
-                  title: _buttonTitle,
-                  onPressed: _isButtonEnabled ? _onButtonPressed : null,
-                ),
-                const SizedBox(height: 16),
-              ]),
+              child: SingleChildScrollView(
+                child: Column(children: [
+                  const SizedBox(height: 40),
+                  AppTextFieldComponent(
+                    title: _textFieldLabel,
+                    hint: _textFieldHint,
+                    controller: _controller,
+                    maxLength: _textFieldMaxLength,
+                    textInputAction: TextInputAction.done,
+                    onChanged: _onTextFieldChanged,
+                    maxLines: _maxLines,
+                  ),
+                  const SizedBox(height: 32),
+                  AppFilledButtonComponent(
+                    title: _buttonTitle,
+                    onPressed: _isButtonEnabled ? _onButtonPressed : null,
+                  ),
+                  const SizedBox(height: 16),
+                ]),
+              ),
             ),
           ),
         ),
-  );
+      );
 }

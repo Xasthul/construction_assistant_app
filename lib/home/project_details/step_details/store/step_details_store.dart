@@ -28,7 +28,11 @@ abstract class _StepDetailsStore with Store {
   @readonly
   String _newStepName = '';
   @readonly
+  String _newStepDetails = '';
+  @readonly
   bool _isStepRenamedSuccessfully = false;
+  @readonly
+  bool _isStepDetailsUpdatedSuccessfully = false;
   @readonly
   bool _isStepDeletedSuccessfully = false;
   @readonly
@@ -41,15 +45,19 @@ abstract class _StepDetailsStore with Store {
   bool get isUpdateStepNameEnabled => _newStepName.isNotEmpty;
 
   @computed
+  bool get isUpdateStepDetailsEnabled => _newStepDetails.isNotEmpty;
+
+  @computed
   bool get isSettingsButtonVisible => _project.isOwner;
 
   @action
-  Future<void> _loadStepDetails() async {
+  Future<void> _loadStep() async {
     try {
       _step = await _stepDetailsUseCase.getStepDetails(
         projectId: _project.id,
         stepId: _step.id,
       );
+      print(_step.details);
     } catch (error) {
       _errorMessage = _coreErrorFormatter.formatError(error);
     }
@@ -64,8 +72,24 @@ abstract class _StepDetailsStore with Store {
         title: _newStepName,
       );
       await _projectDetailsNotifier.loadSteps();
-      await _loadStepDetails();
+      await _loadStep();
       _isStepRenamedSuccessfully = true;
+    } catch (error) {
+      _errorMessage = _coreErrorFormatter.formatError(error);
+    }
+  }
+
+  @action
+  Future<void> updateStepDetails() async {
+    try {
+      await _stepDetailsUseCase.updateStepDetails(
+        projectId: _project.id,
+        stepId: _step.id,
+        details: _newStepDetails,
+      );
+      await _projectDetailsNotifier.loadSteps();
+      await _loadStep();
+      _isStepDetailsUpdatedSuccessfully = true;
     } catch (error) {
       _errorMessage = _coreErrorFormatter.formatError(error);
     }
@@ -79,7 +103,7 @@ abstract class _StepDetailsStore with Store {
         stepId: _step.id,
       );
       await _projectDetailsNotifier.loadSteps();
-      await _loadStepDetails();
+      await _loadStep();
     } catch (error) {
       _errorMessage = _coreErrorFormatter.formatError(error);
     }
@@ -103,7 +127,16 @@ abstract class _StepDetailsStore with Store {
   void updateNewStepName(String newName) => _newStepName = newName;
 
   @action
+  void updateNewStepDetails(String newStepDetails) => _newStepDetails = newStepDetails;
+
+  @action
   void resetNewStepName() => _newStepName = '';
+
+  @action
+  void resetNewStepDetails() => _newStepDetails = '';
+
+  @action
+  void resetIsStepDetailsUpdatedSuccessfully() => _isStepDetailsUpdatedSuccessfully = false;
 
   @action
   void resetIsStepRenamedSuccessfully() => _isStepRenamedSuccessfully = false;
