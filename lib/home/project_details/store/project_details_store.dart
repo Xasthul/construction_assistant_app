@@ -1,5 +1,6 @@
 import 'package:construction_assistant_app/app/app_dependencies.dart';
 import 'package:construction_assistant_app/app/utils/core/core_error_formatter.dart';
+import 'package:construction_assistant_app/home/project_details/utils/notifier/project_details_notifier.dart';
 import 'package:construction_assistant_app/home/project_details/utils/use_case/project_details_use_case.dart';
 import 'package:construction_assistant_app/home/store/home_store.dart';
 import 'package:construction_assistant_app/home/utils/entity/project.dart';
@@ -11,7 +12,7 @@ part 'project_details_store.g.dart';
 
 class ProjectDetailsStore = _ProjectDetailsStore with _$ProjectDetailsStore;
 
-abstract class _ProjectDetailsStore with Store {
+abstract class _ProjectDetailsStore with Store, ProjectDetailsNotifier {
   _ProjectDetailsStore({required Project project}) : _project = project;
 
   final ProjectDetailsUseCase _projectDetailsUseCase = getIt<ProjectDetailsUseCase>();
@@ -51,10 +52,12 @@ abstract class _ProjectDetailsStore with Store {
 
   @action
   Future<void> load() async {
-    await _loadSteps();
+    await loadSteps();
   }
 
-  Future<void> _loadSteps() async {
+  @override
+  @action
+  Future<void> loadSteps() async {
     try {
       _steps = await _projectDetailsUseCase.getProjectSteps(projectId: _project.id);
     } catch (error) {

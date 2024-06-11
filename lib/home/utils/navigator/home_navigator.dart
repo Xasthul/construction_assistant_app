@@ -78,9 +78,9 @@ class HomeNavigator extends InheritedWidget {
         ),
       );
 
-  void navigateToCreateStep() => _navigationKey.currentState?.push(
+  void navigateToCreateStep({required Project project}) => _navigationKey.currentState?.push(
         MaterialPageRoute(
-          builder: (context) => const CreateStepComponent(),
+          builder: (context) => CreateStepComponent(project: project),
         ),
       );
 

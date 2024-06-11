@@ -75,7 +75,7 @@ class _ProjectDetailsComponentBaseState extends State<_ProjectDetailsComponentBa
                 return Column(children: [
                   const SizedBox(height: 20),
                   const ProjectDetailsNameComponent(),
-                  if (_store.steps.isEmpty)
+                  if (_store.steps.isNotEmpty)
                     const ProjectDetailsContentComponent()
                   else
                     const ProjectDetailsEmptyContentComponent(),

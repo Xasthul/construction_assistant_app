@@ -21,7 +21,7 @@ class _ProjectDetailsHeaderComponentState extends State<ProjectDetailsHeaderComp
         builder: (context) => HeaderComponent(
           title: AppLocalizations.of(context).projectDetailsStepsCount(_store.stepsCount),
           buttonTitle: AppLocalizations.of(context).projectDetailsAddNewStepButton,
-          onPressed: HomeNavigator.of(context).navigateToCreateStep,
+          onPressed: () => HomeNavigator.of(context).navigateToCreateStep(project: _store.project),
         ),
       );
 }

@@ -121,5 +121,15 @@
   "projectSettingsAddUserTitle": "Add user",
   "projectSettingsUserEmailLabel": "User email",
   "projectSettingsEnterUsersEmailHint": "Enter user's email",
-  "projectSettingsAddButton": "Add"
+  "projectSettingsAddButton": "Add",
+  "@-------------------------CreateStep-------------------------": {},
+  "createStepTitle": "Create step",
+  "createStepNameLabel": "Name",
+  "createStepEnterStepNameHint": "Enter step name",
+  "createStepDetailsLabel": "Details",
+  "createStepEnterStepDetailsHint": "Enter step details",
+  "createStepOrderLabel": "Order",
+  "createStepEnterStepOrderHint": "Enter step order",
+  "createStepAssetsButton": "Assets",
+  "createStepCreateButton": "Create"
 }

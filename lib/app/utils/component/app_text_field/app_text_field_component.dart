@@ -28,6 +28,7 @@ class AppTextFieldComponent extends StatelessWidget {
     TextCapitalization? textCapitalization,
     List<TextInputFormatter>? inputFormatters,
     bool autofocus = false,
+    int maxLines = 1,
   })  : _controller = controller,
         _title = title,
         _maxLength = maxLength,
@@ -48,7 +49,8 @@ class AppTextFieldComponent extends StatelessWidget {
         _textInputType = textInputType,
         _textCapitalization = textCapitalization,
         _inputFormatters = inputFormatters,
-        _autofocus = autofocus;
+        _autofocus = autofocus,
+        _maxLines = maxLines;
 
   final TextEditingController _controller;
   final int _maxLength;
@@ -71,6 +73,7 @@ class AppTextFieldComponent extends StatelessWidget {
   final TextCapitalization? _textCapitalization;
   final List<TextInputFormatter>? _inputFormatters;
   final bool _autofocus;
+  final int _maxLines;
 
   @override
   Widget build(BuildContext context) => Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -141,6 +144,7 @@ class AppTextFieldComponent extends StatelessWidget {
           autocorrect: false,
           inputFormatters: _inputFormatters,
           autofocus: _autofocus,
+          maxLines: _maxLines,
         ),
         if (!_hasError && _helperText != null)
           Column(children: [
