@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:typed_data';
 
 import 'package:construction_assistant_app/app/app_dependencies.dart';
 import 'package:construction_assistant_app/app/utils/core/core_error_formatter.dart';
@@ -8,6 +7,8 @@ import 'package:construction_assistant_app/home/project_details/store/project_de
 import 'package:construction_assistant_app/home/project_details/utils/notifier/project_details_notifier.dart';
 import 'package:construction_assistant_app/home/utils/entity/project.dart';
 import 'package:construction_assistant_app/home/utils/entity/step.dart';
+import 'package:construction_assistant_app/home/utils/use_case/image_picker_use_case.dart';
+import 'package:flutter/foundation.dart';
 import 'package:mobx/mobx.dart';
 
 part 'step_details_store.g.dart';
@@ -23,6 +24,7 @@ abstract class _StepDetailsStore with Store {
 
   final Project _project;
   final StepDetailsUseCase _stepDetailsUseCase = getIt<StepDetailsUseCase>();
+  final ImagePickerUseCase _imagePickerUseCase = getIt<ImagePickerUseCase>();
   final ProjectDetailsNotifier _projectDetailsNotifier = getIt<ProjectDetailsStore>();
   final CoreErrorFormatter _coreErrorFormatter = getIt<CoreErrorFormatter>();
 
@@ -38,7 +40,14 @@ abstract class _StepDetailsStore with Store {
   @readonly
   bool _isStepDetailsUpdatedSuccessfully = false;
   @readonly
+  bool _areAssetsUpdatedSuccessfully = false;
+  @readonly
   bool _isStepDeletedSuccessfully = false;
+  ObservableList<Uint8List> updateAssets = ObservableList.of([]);
+  @readonly
+  bool _isLoadingAsset = false;
+  @readonly
+  bool _isUpdateAssetsLoading = false;
   @readonly
   String? _errorMessage;
 
@@ -54,8 +63,25 @@ abstract class _StepDetailsStore with Store {
   @computed
   bool get isSettingsButtonVisible => _project.isOwner;
 
+  @computed
+  int get updateAssetsCount => updateAssets.length;
+
+  @computed
+  bool get canAddMoreAssets => updateAssets.length < 3;
+
+  @computed
+  bool get isSaveAssetsButtonEnabled {
+    final one = assets.map((asset) => base64Encode(asset)).toList();
+    final two = updateAssets.map((asset) => base64Encode(asset)).toList();
+    final temp = !listEquals(one, two);
+    return !listEquals(one, two);
+  }
+
   @action
-  Future<void> load() async => assets = ObservableList.of(_step.assets.map((asset) => base64Decode(asset)).toList());
+  Future<void> load() async {
+    assets = ObservableList.of(_step.assets.map((asset) => base64Decode(asset)).toList());
+    updateAssets = assets;
+  }
 
   @action
   Future<void> _loadStep() async {
@@ -102,6 +128,27 @@ abstract class _StepDetailsStore with Store {
   }
 
   @action
+  Future<void> updateStepAssets() async {
+    _isUpdateAssetsLoading = true;
+    try {
+      final List<String> assets = updateAssets.map((asset) => base64Encode(asset)).toList();
+      await _stepDetailsUseCase.updateStepDetails(
+        projectId: _project.id,
+        stepId: _step.id,
+        assets: assets,
+      );
+      await _projectDetailsNotifier.loadSteps();
+      await _loadStep();
+      this.assets = ObservableList.of(_step.assets.map((asset) => base64Decode(asset)).toList());
+      _areAssetsUpdatedSuccessfully = true;
+    } catch (error) {
+      _errorMessage = _coreErrorFormatter.formatError(error);
+    } finally {
+      _isUpdateAssetsLoading = false;
+    }
+  }
+
+  @action
   Future<void> completeStep() async {
     try {
       await _stepDetailsUseCase.completeStep(
@@ -130,6 +177,25 @@ abstract class _StepDetailsStore with Store {
   }
 
   @action
+  Future<void> addAsset() async {
+    _isLoadingAsset = true;
+    try {
+      final asset = await _imagePickerUseCase.selectImage();
+      if (asset == null) {
+        return;
+      }
+      updateAssets.add(asset);
+    } catch (error) {
+      _errorMessage = _coreErrorFormatter.formatError(error);
+    } finally {
+      _isLoadingAsset = false;
+    }
+  }
+
+  @action
+  void deleteAsset(int index) => updateAssets.removeAt(index);
+
+  @action
   void updateNewStepName(String newName) => _newStepName = newName;
 
   @action
@@ -142,6 +208,9 @@ abstract class _StepDetailsStore with Store {
   void resetNewStepDetails() => _newStepDetails = '';
 
   @action
+  void resetUpdateAssets() => updateAssets = assets;
+
+  @action
   void resetIsStepDetailsUpdatedSuccessfully() => _isStepDetailsUpdatedSuccessfully = false;
 
   @action
@@ -149,6 +218,9 @@ abstract class _StepDetailsStore with Store {
 
   @action
   void resetIsStepDeletedSuccessfully() => _isStepDeletedSuccessfully = false;
+
+  @action
+  void resetAreAssetsUpdatedSuccessfully() => _areAssetsUpdatedSuccessfully = false;
 
   @action
   void resetErrorMessage() => _errorMessage = null;

@@ -55,7 +55,7 @@ class _StepSettingsComponentState extends State<StepSettingsComponent> with Reac
               const SizedBox(height: 12),
               AppActionButtonComponent(
                 title: AppLocalizations.of(context).stepSettingsUpdateAssetsButton,
-                onPressed: HomeNavigator.of(context).navigateToStepSettingsUpdateAssets,
+                onPressed: HomeNavigator.of(context).navigateToStepSettingsAssets,
               ),
               const SizedBox(height: 12),
               AppActionButtonComponent(

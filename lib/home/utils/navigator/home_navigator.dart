@@ -10,9 +10,9 @@ import 'package:construction_assistant_app/home/project_details/project_settings
 import 'package:construction_assistant_app/home/project_details/project_settings/project_settings_rename_component.dart';
 import 'package:construction_assistant_app/home/project_details/project_settings/project_settings_users_component.dart';
 import 'package:construction_assistant_app/home/project_details/step_details/step_details_component.dart';
+import 'package:construction_assistant_app/home/project_details/step_details/step_settings/step_settings_assets/step_settings_assets_component.dart';
 import 'package:construction_assistant_app/home/project_details/step_details/step_settings/step_settings_component.dart';
 import 'package:construction_assistant_app/home/project_details/step_details/step_settings/step_settings_rename_component.dart';
-import 'package:construction_assistant_app/home/project_details/step_details/step_settings/step_settings_update_assets_component.dart';
 import 'package:construction_assistant_app/home/project_details/step_details/step_settings/step_settings_update_details_component.dart';
 import 'package:construction_assistant_app/home/project_details/step_details/utils/component/step_details_assets/step_details_assets_component.dart';
 import 'package:construction_assistant_app/home/utils/entity/project.dart';
@@ -164,9 +164,9 @@ class HomeNavigator extends InheritedWidget {
         ),
       );
 
-  void navigateToStepSettingsUpdateAssets() => _navigationKey.currentState?.push(
+  void navigateToStepSettingsAssets() => _navigationKey.currentState?.push(
         MaterialPageRoute(
-          builder: (context) => const StepSettingsUpdateAssetsComponent(),
+          builder: (context) => const StepSettingsAssetsComponent(),
         ),
       );
 }

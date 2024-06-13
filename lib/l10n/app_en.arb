@@ -228,6 +228,6 @@
       }
     }
   },
-  "stepSettingsAddAssetButton": "Add asset",
-  "stepSettingsAddNewAssetButton": "Add new asset"
+  "stepSettingsAddNewAssetButton": "Add new asset",
+  "stepSettingsSaveButton": "Save"
 }

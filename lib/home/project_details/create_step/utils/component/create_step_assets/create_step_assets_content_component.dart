@@ -22,7 +22,7 @@ class _CreateStepAssetsContentComponentState extends State<CreateStepAssetsConte
           HeaderComponent(
             title: AppLocalizations.of(context).createStepAssetsCountLabel(_store.addedAssetsCount),
             buttonTitle: AppLocalizations.of(context).createStepAddNewAssetButton,
-            onPressed: _store.canAddMoreAssets ? () => _store.addAsset() : null,
+            onPressed: _store.canAddMoreAssets ? _store.addAsset : null,
           ),
           const SizedBox(height: 24),
           Expanded(

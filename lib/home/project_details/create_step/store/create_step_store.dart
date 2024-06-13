@@ -8,6 +8,7 @@ import 'package:construction_assistant_app/home/project_details/store/project_de
 import 'package:construction_assistant_app/home/project_details/utils/notifier/project_details_notifier.dart';
 import 'package:construction_assistant_app/home/project_details/utils/use_case/project_details_use_case.dart';
 import 'package:construction_assistant_app/home/utils/entity/project.dart';
+import 'package:construction_assistant_app/home/utils/use_case/image_picker_use_case.dart';
 import 'package:mobx/mobx.dart';
 
 part 'create_step_store.g.dart';
@@ -19,6 +20,7 @@ abstract class _CreateStepStore with Store {
 
   final Project _project;
   final ProjectDetailsUseCase _projectDetailsUseCase = getIt<ProjectDetailsUseCase>();
+  final ImagePickerUseCase _imagePickerUseCase = getIt<ImagePickerUseCase>();
   final ProjectDetailsNotifier _projectDetailsNotifier = getIt<ProjectDetailsStore>();
   final CoreErrorFormatter _coreErrorFormatter = getIt<CoreErrorFormatter>();
 
@@ -75,7 +77,7 @@ abstract class _CreateStepStore with Store {
   Future<void> addAsset() async {
     _isLoadingAsset = true;
     try {
-      final asset = await _projectDetailsUseCase.selectImage();
+      final asset = await _imagePickerUseCase.selectImage();
       if (asset == null) {
         return;
       }
