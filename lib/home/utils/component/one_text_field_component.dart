@@ -4,6 +4,7 @@ import 'package:construction_assistant_app/app/utils/component/app_text_field/ap
 import 'package:construction_assistant_app/app/utils/component/hide_keyboard_component.dart';
 import 'package:construction_assistant_app/home/utils/navigator/home_navigator.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class OneTextFieldComponent extends StatelessWidget {
   const OneTextFieldComponent({
@@ -18,6 +19,8 @@ class OneTextFieldComponent extends StatelessWidget {
     required bool isButtonEnabled,
     required VoidCallback onButtonPressed,
     int maxLines = 1,
+    TextInputType? textInputType,
+    List<TextInputFormatter>? inputFormatters,
   })  : _appBarTitle = appBarTitle,
         _controller = controller,
         _textFieldLabel = textFieldLabel,
@@ -27,7 +30,9 @@ class OneTextFieldComponent extends StatelessWidget {
         _buttonTitle = buttonTitle,
         _isButtonEnabled = isButtonEnabled,
         _onButtonPressed = onButtonPressed,
-        _maxLines = maxLines;
+        _maxLines = maxLines,
+        _textInputType = textInputType,
+        _inputFormatters = inputFormatters;
 
   final String _appBarTitle;
   final TextEditingController _controller;
@@ -39,6 +44,8 @@ class OneTextFieldComponent extends StatelessWidget {
   final bool _isButtonEnabled;
   final VoidCallback _onButtonPressed;
   final int _maxLines;
+  final TextInputType? _textInputType;
+  final List<TextInputFormatter>? _inputFormatters;
 
   @override
   Widget build(BuildContext context) => HideKeyboardComponent(
@@ -61,6 +68,8 @@ class OneTextFieldComponent extends StatelessWidget {
                     textInputAction: TextInputAction.done,
                     onChanged: _onTextFieldChanged,
                     maxLines: _maxLines,
+                    textInputType: _textInputType,
+                    inputFormatters: _inputFormatters,
                   ),
                   const SizedBox(height: 32),
                   AppFilledButtonComponent(

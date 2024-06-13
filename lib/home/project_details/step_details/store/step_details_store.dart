@@ -36,9 +36,13 @@ abstract class _StepDetailsStore with Store {
   @readonly
   String _newStepDetails = '';
   @readonly
+  String _newStepOrder = '';
+  @readonly
   bool _isStepRenamedSuccessfully = false;
   @readonly
   bool _isStepDetailsUpdatedSuccessfully = false;
+  @readonly
+  bool _isStepOrderUpdatedSuccessfully = false;
   @readonly
   bool _areAssetsUpdatedSuccessfully = false;
   @readonly
@@ -61,6 +65,9 @@ abstract class _StepDetailsStore with Store {
   bool get isUpdateStepDetailsEnabled => _newStepDetails.isNotEmpty;
 
   @computed
+  bool get isUpdateStepOrderEnabled => _newStepOrder.isNotEmpty;
+
+  @computed
   bool get isSettingsButtonVisible => _project.isOwner;
 
   @computed
@@ -76,6 +83,9 @@ abstract class _StepDetailsStore with Store {
     final temp = !listEquals(one, two);
     return !listEquals(one, two);
   }
+
+  @computed
+  String get stepOrderString => _step.order.toString();
 
   @action
   Future<void> load() async {
@@ -122,6 +132,22 @@ abstract class _StepDetailsStore with Store {
       await _projectDetailsNotifier.loadSteps();
       await _loadStep();
       _isStepDetailsUpdatedSuccessfully = true;
+    } catch (error) {
+      _errorMessage = _coreErrorFormatter.formatError(error);
+    }
+  }
+
+  @action
+  Future<void> updateStepOrder() async {
+    try {
+      await _stepDetailsUseCase.updateStepDetails(
+        projectId: _project.id,
+        stepId: _step.id,
+        order: int.parse(_newStepOrder),
+      );
+      await _projectDetailsNotifier.loadSteps();
+      await _loadStep();
+      _isStepOrderUpdatedSuccessfully = true;
     } catch (error) {
       _errorMessage = _coreErrorFormatter.formatError(error);
     }
@@ -202,16 +228,25 @@ abstract class _StepDetailsStore with Store {
   void updateNewStepDetails(String newStepDetails) => _newStepDetails = newStepDetails;
 
   @action
+  void updateNewStepOrder(String newStepOrder) => _newStepOrder = newStepOrder;
+
+  @action
   void resetNewStepName() => _newStepName = '';
 
   @action
   void resetNewStepDetails() => _newStepDetails = '';
 
   @action
+  void resetNewStepOrder() => _newStepOrder = '';
+
+  @action
   void resetUpdateAssets() => updateAssets = assets;
 
   @action
   void resetIsStepDetailsUpdatedSuccessfully() => _isStepDetailsUpdatedSuccessfully = false;
+
+  @action
+  void resetIsStepOrderUpdatedSuccessfully() => _isStepOrderUpdatedSuccessfully = false;
 
   @action
   void resetIsStepRenamedSuccessfully() => _isStepRenamedSuccessfully = false;

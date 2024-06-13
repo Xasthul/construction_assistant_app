@@ -37,34 +37,41 @@ class _StepSettingsComponentState extends State<StepSettingsComponent> with Reac
           onBackButtonPressed: HomeNavigator.of(context).pop,
         ),
         body: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: Column(children: [
-              const SizedBox(height: 20),
-              const StepDetailsNameComponent(),
-              const SizedBox(height: 32),
-              AppActionButtonComponent(
-                title: AppLocalizations.of(context).stepSettingsRenameStepButton,
-                onPressed: HomeNavigator.of(context).navigateToStepSettingsRename,
-              ),
-              const SizedBox(height: 12),
-              AppActionButtonComponent(
-                title: AppLocalizations.of(context).stepSettingsUpdateDetailsButton,
-                onPressed: HomeNavigator.of(context).navigateToStepSettingsUpdateDetails,
-              ),
-              const SizedBox(height: 12),
-              AppActionButtonComponent(
-                title: AppLocalizations.of(context).stepSettingsUpdateAssetsButton,
-                onPressed: HomeNavigator.of(context).navigateToStepSettingsAssets,
-              ),
-              const SizedBox(height: 12),
-              AppActionButtonComponent(
-                title: AppLocalizations.of(context).stepSettingsDeleteStepButton,
-                onPressed: _store.deleteStep,
-                isWarning: true,
-              ),
-              const SizedBox(height: 12),
-            ]),
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Column(children: [
+                const SizedBox(height: 20),
+                const StepDetailsNameComponent(),
+                const SizedBox(height: 32),
+                AppActionButtonComponent(
+                  title: AppLocalizations.of(context).stepSettingsRenameStepButton,
+                  onPressed: HomeNavigator.of(context).navigateToStepSettingsRename,
+                ),
+                const SizedBox(height: 12),
+                AppActionButtonComponent(
+                  title: AppLocalizations.of(context).stepSettingsUpdateDetailsButton,
+                  onPressed: HomeNavigator.of(context).navigateToStepSettingsUpdateDetails,
+                ),
+                const SizedBox(height: 12),
+                AppActionButtonComponent(
+                  title: AppLocalizations.of(context).stepSettingsUpdateOrderButton,
+                  onPressed: HomeNavigator.of(context).navigateToStepSettingsUpdateOrder,
+                ),
+                const SizedBox(height: 12),
+                AppActionButtonComponent(
+                  title: AppLocalizations.of(context).stepSettingsUpdateAssetsButton,
+                  onPressed: HomeNavigator.of(context).navigateToStepSettingsAssets,
+                ),
+                const SizedBox(height: 12),
+                AppActionButtonComponent(
+                  title: AppLocalizations.of(context).stepSettingsDeleteStepButton,
+                  onPressed: _store.deleteStep,
+                  isWarning: true,
+                ),
+                const SizedBox(height: 12),
+              ]),
+            ),
           ),
         ),
       );

@@ -9,7 +9,7 @@ import 'package:construction_assistant_app/app/utils/helpers/after_layout.dart';
 import 'package:construction_assistant_app/app/utils/helpers/reaction_dispose.dart';
 import 'package:construction_assistant_app/home/project_details/create_step/create_step_dependencies.dart';
 import 'package:construction_assistant_app/home/project_details/create_step/store/create_step_store.dart';
-import 'package:construction_assistant_app/home/project_details/create_step/utils/formatter/create_step_order_input_formatter.dart';
+import 'package:construction_assistant_app/home/project_details/utils/formatter/step_order_input_formatter.dart';
 import 'package:construction_assistant_app/home/utils/entity/project.dart';
 import 'package:construction_assistant_app/home/utils/navigator/home_navigator.dart';
 import 'package:construction_assistant_app/l10n/generated/app_localizations.dart';
@@ -112,7 +112,8 @@ class _CreateStepComponentBaseState extends State<_CreateStepComponentBase> with
                       maxLength: 4,
                       textInputAction: TextInputAction.done,
                       onChanged: (text) => _store.updateCreateStepState(orderText: text),
-                      inputFormatters: [CreateStepOrderInputFormatter()],
+                      textInputType: TextInputType.number,
+                      inputFormatters: [StepOrderInputFormatter()],
                     ),
                     const SizedBox(height: 24),
                     AppActionButtonComponent(

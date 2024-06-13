@@ -1,6 +1,6 @@
 import 'package:flutter/services.dart';
 
-class CreateStepOrderInputFormatter extends TextInputFormatter {
+class StepOrderInputFormatter extends TextInputFormatter {
   static final RegExp _onlyDigitsRegExp = RegExp(r'\d*');
 
   @override
