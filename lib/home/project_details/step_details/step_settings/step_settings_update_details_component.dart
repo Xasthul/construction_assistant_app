@@ -45,6 +45,7 @@ class _StepSettingsUpdateDetailsComponentState extends State<StepSettingsUpdateD
           textFieldLabel: AppLocalizations.of(context).stepSettingsStepDetailsLabel,
           textFieldHint: AppLocalizations.of(context).stepSettingsEnterStepDetailsHint,
           textFieldMaxLength: 500,
+          textInputAction: TextInputAction.newline,
           onTextFieldChanged: _store.updateNewStepDetails,
           buttonTitle: AppLocalizations.of(context).stepSettingsUpdateButton,
           isButtonEnabled: _store.isUpdateStepDetailsEnabled,

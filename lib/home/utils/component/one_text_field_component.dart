@@ -18,6 +18,7 @@ class OneTextFieldComponent extends StatelessWidget {
     required String buttonTitle,
     required bool isButtonEnabled,
     required VoidCallback onButtonPressed,
+    TextInputAction textInputAction = TextInputAction.done,
     int maxLines = 1,
     TextInputType? textInputType,
     List<TextInputFormatter>? inputFormatters,
@@ -30,6 +31,7 @@ class OneTextFieldComponent extends StatelessWidget {
         _buttonTitle = buttonTitle,
         _isButtonEnabled = isButtonEnabled,
         _onButtonPressed = onButtonPressed,
+        _textInputAction = textInputAction,
         _maxLines = maxLines,
         _textInputType = textInputType,
         _inputFormatters = inputFormatters;
@@ -43,6 +45,7 @@ class OneTextFieldComponent extends StatelessWidget {
   final String _buttonTitle;
   final bool _isButtonEnabled;
   final VoidCallback _onButtonPressed;
+  final TextInputAction _textInputAction;
   final int _maxLines;
   final TextInputType? _textInputType;
   final List<TextInputFormatter>? _inputFormatters;
@@ -65,7 +68,7 @@ class OneTextFieldComponent extends StatelessWidget {
                     hint: _textFieldHint,
                     controller: _controller,
                     maxLength: _textFieldMaxLength,
-                    textInputAction: TextInputAction.done,
+                    textInputAction: _textInputAction,
                     onChanged: _onTextFieldChanged,
                     maxLines: _maxLines,
                     textInputType: _textInputType,
