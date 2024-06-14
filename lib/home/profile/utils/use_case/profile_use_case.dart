@@ -1,5 +1,7 @@
 import 'package:construction_assistant_app/app/app_dependencies.dart';
 import 'package:construction_assistant_app/app/utils/core/core_error_handler.dart';
+import 'package:construction_assistant_app/app/utils/network/response/refresh_token_response.dart';
+import 'package:construction_assistant_app/app/utils/use_case/secure_storage.dart';
 import 'package:construction_assistant_app/home/utils/entity/user.dart';
 import 'package:construction_assistant_app/home/utils/mapper/users_mapper.dart';
 import 'package:construction_assistant_app/home/utils/service/users_service.dart';
@@ -7,6 +9,7 @@ import 'package:construction_assistant_app/home/utils/service/users_service.dart
 class ProfileUseCase {
   final UsersService _usersService = getIt<UsersService>();
   final UsersMapper _usersMapper = getIt<UsersMapper>();
+  final SecureStorage _secureStorage = getIt<SecureStorage>();
   final CoreErrorHandler _coreErrorHandler = getIt<CoreErrorHandler>();
 
   Future<User> getUserDetails() async {
@@ -31,10 +34,11 @@ class ProfileUseCase {
     required String newPassword,
   }) async {
     try {
-      await _usersService.updateUserPassword(
+      final RefreshTokenResponse refreshTokenResponse = await _usersService.updateUserPassword(
         oldPassword: oldPassword,
         newPassword: newPassword,
       );
+      await _secureStorage.writeRefreshToken(refreshTokenResponse.refreshToken);
     } catch (error) {
       _coreErrorHandler.throwErrorFrom(error);
     }
