@@ -2,6 +2,7 @@ import 'package:construction_assistant_app/app/app_dependencies.dart';
 import 'package:construction_assistant_app/app/utils/entity/app_constants.dart';
 import 'package:construction_assistant_app/app/utils/network/dio_authorized_client.dart';
 import 'package:construction_assistant_app/app/utils/network/response/app_data_response.dart';
+import 'package:construction_assistant_app/app/utils/network/response/refresh_token_response.dart';
 import 'package:construction_assistant_app/home/utils/network/user_response.dart';
 
 class UsersService {
@@ -18,17 +19,20 @@ class UsersService {
         body: {'newName': newName},
       );
 
-  Future<void> updateUserPassword({
+  Future<RefreshTokenResponse> updateUserPassword({
     required String oldPassword,
     required String newPassword,
-  }) async =>
-      _client.put(
+  }) async {
+    final response = await _client.put(
         '${AppConstants.serviceUrl}/users/change-password',
         body: {
           'oldPassword': oldPassword,
           'newPassword': newPassword,
         },
       );
+    final appDataResponse = AppDataResponse.fromJson(response);
+    return RefreshTokenResponse.fromJson(appDataResponse.data as Map<String, dynamic>);
+  }
 
   Future<void> logout() async => _client.post('${AppConstants.serviceUrl}/users/logout');
 
