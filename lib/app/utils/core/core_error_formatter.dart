@@ -25,7 +25,6 @@ class CoreErrorFormatter {
         CoreInvalidAccessTokenError() => _appLocalizations.coreInvalidAccessTokenError,
         CoreDeleteCreatorFromProjectError() => _appLocalizations.coreDeleteCreatorFromProjectError,
         CoreAccessToProjectDeniedError() => _appLocalizations.coreSomethingWentWrongError,
-        CoreNoStepsWithPreviousOrderFoundError() => _appLocalizations.coreSomethingWentWrongError,
         _ => _appLocalizations.coreUnknownError,
       };
     }
